@@ -1,0 +1,3 @@
+=== 2026-10-10 13:32:08 ===
+$ git init && git add . &&  git status --short | head -30 &&  echo "--- total: $(git status --short | wc -l) files ---" &&  git commit -m 'HK labour enquiry triage: fp16 LoRA on Qwen3-1.7B' -m 'Three-way comparison with paired McNemar tests. Fine-tuning is highly significant (p=0.000); the adapter beats 9B on urgent-case recall (75.7% vs 37.8%) at 41% lower weighted cost. Documents two mid-project self-corrections: a conclusion reversed by test-set size, and a label/serving prompt drift (p=0.003).' &&  git branch -M main &&  gh repo create hk-labour-triage --public --source=. --push
+
