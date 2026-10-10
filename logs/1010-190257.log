@@ -1,0 +1,23 @@
+=== 2026-10-10 19:02:57 ===
+$ ollama list; echo '=== 计时（冷启动包含加载）===';  time curl -s http://localhost:11434/api/generate    -d '{"model":"qwen3.5:9b","prompt":"你好","stream":false,"options":{"num_predict":16,"num_ctx":2048}}' -o /dev/null;  echo '=== 再测一次（这次模型已在显存，是纯推理）===';  time curl -s http://localhost:11434/api/generate    -d '{"model":"qwen3.5:9b","prompt":"你好","stream":false,"options":{"num_predict":16,"num_ctx":2048}}' -o /dev/null
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+NAME                  ID              SIZE      MODIFIED     
+triage-1.7b:latest    bc8f038ff632    3.4 GB    2 hours ago     
+qwen3:1.7b            8f68893c685c    1.4 GB    19 hours ago    
+qwen3.5:latest        56671c2ab938    6.6 GB    3 days ago      
+qwen3.5:9b            56671c2ab938    6.6 GB    4 days ago      
+=== 计时（冷启动包含加载）===
+
+real	0m9.888s
+user	0m0.000s
+sys	0m0.011s
+=== 再测一次（这次模型已在显存，是纯推理）===
+
+real	0m0.495s
+user	0m0.000s
+sys	0m0.007s
+
+=== exit code: 0 ===

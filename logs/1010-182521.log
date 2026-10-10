@@ -1,0 +1,36 @@
+=== 2026-10-10 18:25:21 ===
+$ echo '=== 谁在占 GPU ===';  nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv;  echo; echo '=== 温度 / 时钟 / 功耗 / 降频原因 ===';  nvidia-smi --query-gpu=temperature.gpu,clocks.sm,clocks.max.sm,power.draw,power.limit,clocks_throttle_reasons.active --format=csv;  echo; echo '=== 完整快照 ==='; nvidia-smi | head -20
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+=== 谁在占 GPU ===
+pid, process_name, used_gpu_memory [MiB]
+
+=== 温度 / 时钟 / 功耗 / 降频原因 ===
+temperature.gpu, clocks.current.sm [MHz], clocks.max.sm [MHz], power.draw [W], power.limit [W], clocks_event_reasons.active
+74, 1905 MHz, 2100 MHz, 124.79 W, 200.00 W, 0x0000000000000400
+
+=== 完整快照 ===
+Sat Oct 10 18:25:22 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 615.71.08              KMD Version: 616.92        CUDA UMD Version: 13.4     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3060 Ti     On  |   00000000:01:00.0  On |                  N/A |
+| 65%   74C    P0            125W /  200W |    5619MiB /   8192MiB |     52%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              37      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+
+=== exit code: 0 ===

@@ -1,0 +1,10 @@
+=== 2026-10-10 16:39:44 ===
+$ ollama create triage-1.7b -f models/triage-merged/Modelfile && echo '--- 建好了 ---' && ollama list
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[?2026h[?25l[1Gimporting safetensors model [K[?25h[?2026l
+Error: MLX runtime is not available: failed to load MLX dynamic library (searched: [/usr/local/lib/ollama /home/hugoy/projects/hk-labour-triage/build/lib/ollama /home/hugoy/projects/hk-labour-triage/dist/linux-amd64/lib/ollama /home/hugoy/projects/hk-labour-triage/dist/linux_amd64/lib/ollama])
+
+=== exit code: 1 ===

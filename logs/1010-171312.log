@@ -1,0 +1,62 @@
+=== 2026-10-10 17:13:12 ===
+$ python analyze.py v3_9b.json v4_ollama_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+=== v3_9b.json  (n=106) ===
+  urgency high    recall= 14/37  =  37.8% [24%-54%]   precision=93.3% (14/15)   {'high': 14, 'medium': 23}
+  urgency medium  recall= 32/39  =  82.1% [67%-91%]   precision=49.2% (32/65)   {'high': 1, 'low': 6, 'medium': 32}
+  urgency low     recall= 20/30  =  66.7% [49%-81%]   precision=76.9% (20/26)   {'low': 20, 'medium': 10}
+
+=== v4_ollama_ft.json  (n=106) ===
+  urgency high    recall= 19/37  =  51.4% [36%-67%]   precision=79.2% (19/24)   {'high': 19, 'medium': 18}
+  urgency medium  recall= 33/39  =  84.6% [70%-93%]   precision=47.8% (33/69)   {'high': 5, 'low': 1, 'medium': 33}
+  urgency low     recall= 12/30  =  40.0% [25%-58%]   precision=92.3% (12/13)   {'low': 12, 'medium': 18}
+
+=== cost (gold=high missed costs 3x) ===
+  v3_9b.json               cost= 86 over n=106  = 81 per 100
+  v4_ollama_ft.json        cost= 78 over n=106  = 74 per 100
+  -> lower cost is better: ['v4_ollama_ft.json', 'v3_9b.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: v3_9b.json=63  v4_ollama_ft.json=60   order=['v4_ollama_ft.json', 'v3_9b.json']
+    x3: v3_9b.json=86  v4_ollama_ft.json=78   order=['v4_ollama_ft.json', 'v3_9b.json']
+    x5: v3_9b.json=132  v4_ollama_ft.json=114   order=['v4_ollama_ft.json', 'v3_9b.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 36, 'medium': 11}
+  escalate=False {'high': 1, 'medium': 28, 'low': 30}
+
+=== paired McNemar: v3_9b.json vs v4_ollama_ft.json ===
+  urgency      v3_9b.json only=17  v4_ollama_ft.json only=15  McNemar p=0.860  -> NOT significant
+  exact_match  v3_9b.json only=15  v4_ollama_ft.json only=22  McNemar p=0.324  -> NOT significant
+  urgency agreement: 74/106 = 69.8%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 1] gold=low     both_models=medium  休息日加班之後可以補假還是必須給薪？兩者分別點計？
+  [ 4] gold=high    both_models=medium  如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？
+  [ 5] gold=low     both_models=medium  如果我請病假超過七日，公司要通知我返覆醫生報告嘅期限係幾時？
+  [ 6] gold=low     both_models=medium  年假係由雇主定邊日放，還是我要自選日子？有無限制？
+  [ 7] gold=high    both_models=medium  年假到期未請完，公司會唔會強行扣除我嘅工資？
+  [ 8] gold=low     both_models=medium  我係兼職員工，邊度查下我應該有幾多日公假同埋年假？
+  [14] gold=high    both_models=medium  我請咗年假之後公司取消安排，話要用掉我個假，我可以點樣維護權益？
+  [22] gold=low     both_models=medium  公司因為經濟欠佳要裁員，咁樣做到算係合理解僱嗎？需要符合什麼程序？
+  [27] gold=medium  both_models=high    我個合約寫住要俾 30 日通知期，但公司只派咗我一封信就要我即刻走，點算先至係合法？
+  [33] gold=low     both_models=medium  點樣定義「嚴重失職」至可以即刻終止合約而無須通知期？
+  [34] gold=low     both_models=medium  點樣才算係「合理」嘅解僱程序？需要幾多個證明人證詞先算數？
+  [36] gold=low     both_models=medium  什麼是「實報實銷」的津貼？如果僱主規定所有開支必須由員工自付才獲發津貼，這是否違規？
+  [43] gold=high    both_models=medium  我個月做完咗超過 48 小時工時，但下個月出糧只係按正常時薪畀，差嘅部分點申請？
+  [47] gold=high    both_models=medium  我生病請咗假後返工，公司卻話要扣少啲錢做作「病假扣除」，咁係咪對？
+  [67] gold=high    both_models=medium  我已經退休了，但公司仲幫我轉 MPF 咗兩個月，呢筆錢點算先可以領落嚟？
+  [71] gold=high    both_models=medium  雇主話我個月賺唔夠最低工資，所以可以少咗交強制性公積金，呢種講法對唔對？
+  [72] gold=high    both_models=medium  公司叫我做嘅係清潔工，但我之前已經喺邊度搵過類似工作，呢種算唔算重組員工？
+  [77] gold=high    both_models=medium  我已經跟同一間公司工作五年，但最近幾個月主要係做自由職業，請問我現時嘅身份點算受保障？
+  [79] gold=high    both_models=medium  老闆用假自僱合約掩飾實際僱用關係，我想確認自己究竟有咩資格受保護，可以求助邊度？
+  [80] gold=high    both_models=medium  老闆話我係「獨立合約商」但其實要我買公司嘅制服同設備，點算先知道真係受雇未？
+  [83] gold=high    both_models=medium  老闆話我係自由職業者（自僱），唔洗簽僱傭合約，我點樣證明其實我受雇主管理？
+  [92] gold=low     both_models=medium  做咗一個月就走，算唔算入遣散費計算期數裡面？
+  [93] gold=high    both_models=medium  公司清盤，我個個戶頭剩返咗幾多錢先算遣散費？
+  [103] gold=high    both_models=medium  我想知如果公司倒閉清盤，我仲可以咩辦法追討遣散費同長期服務金？
+  [104] gold=high    both_models=medium  我請咗好多年假，而家被辭退，假期日數點影響遣散費金額？
+
+=== exit code: 0 ===

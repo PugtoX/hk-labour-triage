@@ -1,0 +1,12 @@
+=== 2026-10-10 17:54:07 ===
+$ python evaluate.py --model qwen3.5:9b --data data/test.jsonl --out v5_9b.json &&  python evaluate.py --model triage-1.7b --data data/test.jsonl --out v5_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] model=qwen3.5:9b  data=data/test.jsonl  n=106  system=short (379 chars)
+
+[  1/106] ✗ 312.6s  休息日加班之後可以補假還是必須給薪？兩者分別點計？   urgency: gold='low'->pred='medium'
+[  2/106] ✓ 324.5s  如果係法定假日當日我要調假去週末，薪酬會否變少？   (retry x2)
+[  3/106] ✓   0.6s  如果我申請年假被拒絕，咗唔知我有權強逼公司批准嗎？
+[  4/106] ✗ 413.9s  如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？   urgency: gold='high'->pred='medium'

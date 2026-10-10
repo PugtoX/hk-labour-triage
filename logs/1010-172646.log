@@ -1,0 +1,9 @@
+=== 2026-10-10 17:26:46 ===
+$ python evaluate.py --model qwen3.5:9b --data data/test.jsonl --out v5_9b.json &&  python evaluate.py --model triage-1.7b --data data/test.jsonl --out v5_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] model=qwen3.5:9b  data=data/test.jsonl  n=106  system=short (379 chars)
+
+[  1/106] ✗ 900.2s  休息日加班之後可以補假還是必須給薪？兩者分別點計？   ERROR TimeoutError: timed out

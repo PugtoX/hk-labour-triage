@@ -1,0 +1,7 @@
+=== 2026-10-10 19:26:48 ===
+$ git add -A && git status --short | head -25 && echo '--- total: '$(git status --short | wc -l)' ---' && git commit -m 'Fix the Ollama serving path; add same-framework comparison' -m 'evaluate.py now sends the system prompt as a field (which overrides the Modelfile SYSTEM) instead of folding it into prompt. A custom model was receiving its rules twice and lost 24pp of urgent-case recall; it recovered 51.4% -> 73.0%.
+
+Ollama safetensors import is MLX-only, so export_model.py + to_ollama.sh route through llama.cpp -> GGUF.
+
+Same-framework result: urgency ties at 63.2%, urgent recall doubles 37.8% -> 73.0%, weighted cost drops 30% (80 -> 56).' && git push
+

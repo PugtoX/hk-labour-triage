@@ -1,3 +1,28 @@
 === 2026-10-10 13:35:38 ===
 $ git add . && git commit -m 'Add v4 Ollama deployment run and analysis guards' -m 'analyze.py now warns loudly on unparseable predictions and shows a sample raw reply, and bails out instead of dividing by zero. check_facts.py no longer false-positives on 最低工資法例.' && git push
 
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[main ca1e415] Add v4 Ollama deployment run and analysis guards
+ 3 files changed, 37 insertions(+)
+ create mode 100755 logs/1010-133457.log
+ create mode 100755 logs/1010-133538.log
+fatal: The upstream branch of your current branch does not match
+the name of your current branch.  To push to the upstream branch
+on the remote, use
+
+    git push origin HEAD:master
+
+To push to the branch of the same name on the remote, use
+
+    git push origin HEAD
+
+To choose either option permanently, see push.default in 'git help config'.
+
+To avoid automatically configuring an upstream branch when its name
+won't match the local branch, see option 'simple' of branch.autoSetupMerge
+in 'git help config'.
+
+
+=== exit code: 128 ===

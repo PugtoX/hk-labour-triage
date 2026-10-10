@@ -1,0 +1,12 @@
+=== 2026-10-10 18:25:31 ===
+$ time curl -s http://localhost:11434/api/generate    -d '{"model":"triage-1.7b","prompt":"你好","stream":false,"options":{"num_predict":16,"num_ctx":2048}}'    -o /dev/null
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+real	0m50.216s
+user	0m0.005s
+sys	0m0.014s
+
+=== exit code: 0 ===

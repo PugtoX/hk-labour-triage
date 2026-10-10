@@ -1,0 +1,51 @@
+=== 2026-10-10 19:15:21 ===
+$ python analyze.py v5_9b.json v5_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+=== v5_9b.json  (n=106) ===
+  urgency high    recall= 14/37  =  37.8% [24%-54%]   precision=87.5% (14/16)   {'high': 14, 'low': 3, 'medium': 20}
+  urgency medium  recall= 29/39  =  74.4% [59%-85%]   precision=52.7% (29/55)   {'high': 2, 'low': 8, 'medium': 29}
+  urgency low     recall= 24/30  =  80.0% [63%-90%]   precision=68.6% (24/35)   {'low': 24, 'medium': 6}
+
+=== v5_ft.json  (n=106) ===
+  urgency high    recall= 27/37  =  73.0% [57%-85%]   precision=73.0% (27/37)   {'high': 27, 'medium': 10}
+  urgency medium  recall= 29/39  =  74.4% [59%-85%]   precision=50.0% (29/58)   {'high': 10, 'medium': 29}
+  urgency low     recall= 11/30  =  36.7% [22%-54%]   precision=100.0% (11/11)   {'low': 11, 'medium': 19}
+
+=== cost (gold=high missed costs 3x) ===
+  v5_9b.json               cost= 85 over n=106  = 80 per 100
+  v5_ft.json               cost= 59 over n=106  = 56 per 100
+  -> lower cost is better: ['v5_ft.json', 'v5_9b.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: v5_9b.json=62  v5_ft.json=49   order=['v5_ft.json', 'v5_9b.json']
+    x3: v5_9b.json=85  v5_ft.json=59   order=['v5_ft.json', 'v5_9b.json']
+    x5: v5_9b.json=131  v5_ft.json=79   order=['v5_ft.json', 'v5_9b.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 36, 'medium': 11}
+  escalate=False {'high': 1, 'medium': 28, 'low': 30}
+
+=== paired McNemar: v5_9b.json vs v5_ft.json ===
+  urgency      v5_9b.json only=22  v5_ft.json only=22  McNemar p=1.000  -> NOT significant
+  exact_match  v5_9b.json only=13  v5_ft.json only=25  McNemar p=0.073  -> NOT significant
+  urgency agreement: 59/106 = 55.7%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 1] gold=low     both_models=medium  休息日加班之後可以補假還是必須給薪？兩者分別點計？
+  [ 4] gold=high    both_models=medium  如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？
+  [ 5] gold=low     both_models=medium  如果我請病假超過七日，公司要通知我返覆醫生報告嘅期限係幾時？
+  [ 7] gold=high    both_models=medium  年假到期未請完，公司會唔會強行扣除我嘅工資？
+  [22] gold=low     both_models=medium  公司因為經濟欠佳要裁員，咁樣做到算係合理解僱嗎？需要符合什麼程序？
+  [27] gold=medium  both_models=high    我個合約寫住要俾 30 日通知期，但公司只派咗我一封信就要我即刻走，點算先至係合法？
+  [34] gold=low     both_models=medium  點樣才算係「合理」嘅解僱程序？需要幾多個證明人證詞先算數？
+  [36] gold=low     both_models=medium  什麼是「實報實銷」的津貼？如果僱主規定所有開支必須由員工自付才獲發津貼，這是否違規？
+  [41] gold=medium  both_models=high    如果公司用「培训费」或者「服装费」名目扣减我嘅薪金，而我又唔记得有签署过相关协议，咁样做合符法例吗？
+  [43] gold=high    both_models=medium  我個月做完咗超過 48 小時工時，但下個月出糧只係按正常時薪畀，差嘅部分點申請？
+  [77] gold=high    both_models=medium  我已經跟同一間公司工作五年，但最近幾個月主要係做自由職業，請問我現時嘅身份點算受保障？
+  [80] gold=high    both_models=medium  老闆話我係「獨立合約商」但其實要我買公司嘅制服同設備，點算先知道真係受雇未？
+  [103] gold=high    both_models=medium  我想知如果公司倒閉清盤，我仲可以咩辦法追討遣散費同長期服務金？
+  [104] gold=high    both_models=medium  我請咗好多年假，而家被辭退，假期日數點影響遣散費金額？
+
+=== exit code: 0 ===

@@ -1,0 +1,41 @@
+=== 2026-10-10 16:39:50 ===
+$ python analyze.py v3_9b.json v4_ollama_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+=== v3_9b.json  (n=106) ===
+  urgency high    recall= 14/37  =  37.8% [24%-54%]   precision=93.3% (14/15)   {'high': 14, 'medium': 23}
+  urgency medium  recall= 32/39  =  82.1% [67%-91%]   precision=49.2% (32/65)   {'high': 1, 'low': 6, 'medium': 32}
+  urgency low     recall= 20/30  =  66.7% [49%-81%]   precision=76.9% (20/26)   {'low': 20, 'medium': 10}
+
+=== v4_ollama_ft.json  (n=106) ===
+  [!] 106/106 predictions unparseable — the scores below are NOT a model result. Check the serving path first.
+      sample raw: ''
+      error: HTTPError: HTTP Error 404: Not Found
+  urgency high    recall=  0/37  =   0.0% [0%-9%]   precision= 0.0% (0/0)   {None: 37}
+  urgency medium  recall=  0/39  =   0.0% [0%-9%]   precision= 0.0% (0/0)   {None: 39}
+  urgency low     recall=  0/30  =   0.0% [-0%-11%]   precision= 0.0% (0/0)   {None: 30}
+
+=== cost (gold=high missed costs 3x) ===
+  v3_9b.json               cost= 86 over n=106  = 81 per 100
+  v4_ollama_ft.json        cost=180 over n=106  = 170 per 100
+  -> lower cost is better: ['v3_9b.json', 'v4_ollama_ft.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: v3_9b.json=63  v4_ollama_ft.json=143   order=['v3_9b.json', 'v4_ollama_ft.json']
+    x3: v3_9b.json=86  v4_ollama_ft.json=180   order=['v3_9b.json', 'v4_ollama_ft.json']
+    x5: v3_9b.json=132  v4_ollama_ft.json=254   order=['v3_9b.json', 'v4_ollama_ft.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 36, 'medium': 11}
+  escalate=False {'high': 1, 'medium': 28, 'low': 30}
+
+=== paired McNemar: v3_9b.json vs v4_ollama_ft.json ===
+  urgency      v3_9b.json only=66  v4_ollama_ft.json only=0  McNemar p=0.000  -> SIGNIFICANT
+  exact_match  v3_9b.json only=46  v4_ollama_ft.json only=0  McNemar p=0.000  -> SIGNIFICANT
+  urgency agreement: n/a — no row has a parseable prediction in both dumps
+=== both models agree, gold differs (candidate label errors) ===
+  (none)
+
+=== exit code: 0 ===

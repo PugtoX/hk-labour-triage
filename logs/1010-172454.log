@@ -1,0 +1,21 @@
+=== 2026-10-10 17:24:54 ===
+$ python -c "import json; a=json.load(open('v3_ft.json'))['details']; b=json.load(open('v4_ollama_ft.json'))['details']; d=[(i,x['gold']['urgency'],x['pred']['urgency'],y['pred']['urgency']) for i,(x,y) in enumerate(zip(a,b),1) if x['pred'] and y['pred'] and x['pred']['urgency']!=y['pred']['urgency']]; print('urgency differs:',len(d),'of',len(a)); [print(r) for r in d[:12]]"
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+urgency differs: 15 of 106
+(1, 'low', 'low', 'medium')
+(6, 'low', 'low', 'medium')
+(14, 'high', 'high', 'medium')
+(18, 'low', 'medium', 'low')
+(24, 'high', 'high', 'medium')
+(25, 'medium', 'high', 'medium')
+(45, 'high', 'high', 'medium')
+(47, 'high', 'high', 'medium')
+(51, 'high', 'high', 'medium')
+(71, 'high', 'high', 'medium')
+(79, 'high', 'high', 'medium')
+(80, 'high', 'high', 'medium')
+
+=== exit code: 0 ===

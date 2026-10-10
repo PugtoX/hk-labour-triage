@@ -30,10 +30,19 @@ MAX_ATTEMPTS = 3      # empty responses are intermittent, same as in synthesis
 
 
 def call(model: str, question: str, system: str) -> str:
-    prompt = f"{system}\n\n市民提問：{question}\n\n輸出："
+    # The `system` field OVERRIDES whatever SYSTEM the Modelfile defines, so the
+    # rules reach the model exactly once whether or not the served model carries
+    # its own. Folding the system text into `prompt` instead (the old way) made a
+    # custom model see it TWICE — once from its Modelfile and once from the
+    # prompt — while the stock 9B saw it once, which cost the custom model ~24pp
+    # of urgent-case recall and nearly killed a correct conclusion.
+    #
+    # /api/chat offers the same guarantee but timed out on every request to
+    # qwen3.5:9b (3 x 300s per item), so stick to the proven endpoint.
     payload = json.dumps({
         "model": model,
-        "prompt": prompt,
+        "prompt": f"市民提問：{question}\n\n輸出：",
+        "system": system,
         "stream": False,
         "think": False,
         "format": PREDICTION_SCHEMA,        # single object, not an array

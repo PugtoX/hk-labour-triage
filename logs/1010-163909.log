@@ -1,0 +1,47 @@
+=== 2026-10-10 16:39:09 ===
+$ echo '=== ollama 有哪些模型 ==='; ollama list;  echo; echo '=== 合并产物在不在 ==='; ls -la models/triage-merged/ 2>&1 | head -12;  echo; echo '=== Modelfile 内容 ==='; head -6 models/triage-merged/Modelfile 2>&1;  echo; echo '=== v4 里的真实错误 ==='; python analyze.py v3_9b.json v4_ollama_ft.json 2>&1 | head -12
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+=== ollama 有哪些模型 ===
+NAME              ID              SIZE      MODIFIED     
+qwen3:1.7b        8f68893c685c    1.4 GB    16 hours ago    
+qwen3.5:latest    56671c2ab938    6.6 GB    3 days ago      
+qwen3.5:9b        56671c2ab938    6.6 GB    4 days ago      
+
+=== 合并产物在不在 ===
+total 3371728
+drwxr-xr-x 2 hugoy hugoy       4096 Oct 10 13:09 .
+drwxr-xr-x 4 hugoy hugoy       4096 Oct 10 13:09 ..
+-rw-r--r-- 1 hugoy hugoy        911 Oct 10 13:09 Modelfile
+-rw-r--r-- 1 hugoy hugoy       4168 Oct 10 13:09 chat_template.jinja
+-rw-r--r-- 1 hugoy hugoy       1416 Oct 10 13:09 config.json
+-rw-r--r-- 1 hugoy hugoy        214 Oct 10 13:09 generation_config.json
+-rw------- 1 hugoy hugoy 3441185296 Oct 10 13:09 model.safetensors
+-rw-r--r-- 1 hugoy hugoy   11422650 Oct 10 13:09 tokenizer.json
+-rw-r--r-- 1 hugoy hugoy        694 Oct 10 13:09 tokenizer_config.json
+
+=== Modelfile 内容 ===
+FROM ./
+SYSTEM """你是香港勞工諮詢分流助手。只輸出一個 JSON 物件，不要任何其他文字。
+格式：{"category": "...", "urgency": "high|medium|low", "escalate": true|false}
+category（6 選 1）：
+- 工資與扣薪：工資、欠薪、扣薪、最低工資
+- 假期與休假：休息日、假日、年假、病假、產假、侍產假
+
+=== v4 里的真实错误 ===
+
+=== v3_9b.json  (n=106) ===
+  urgency high    recall= 14/37  =  37.8% [24%-54%]   precision=93.3% (14/15)   {'high': 14, 'medium': 23}
+  urgency medium  recall= 32/39  =  82.1% [67%-91%]   precision=49.2% (32/65)   {'high': 1, 'low': 6, 'medium': 32}
+  urgency low     recall= 20/30  =  66.7% [49%-81%]   precision=76.9% (20/26)   {'low': 20, 'medium': 10}
+
+=== v4_ollama_ft.json  (n=106) ===
+  [!] 106/106 predictions unparseable — the scores below are NOT a model result. Check the serving path first.
+      sample raw: ''
+      error: HTTPError: HTTP Error 404: Not Found
+  urgency high    recall=  0/37  =   0.0% [0%-9%]   precision= 0.0% (0/0)   {None: 37}
+  urgency medium  recall=  0/39  =   0.0% [0%-9%]   precision= 0.0% (0/0)   {None: 39}
+
+=== exit code: 1 ===

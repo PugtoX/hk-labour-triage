@@ -2,13 +2,13 @@
   "report": {
     "model": "triage-1.7b",
     "n": 106,
-    "category_acc": 0.0,
-    "urgency_acc": 0.0,
-    "escalate_acc": 0.0,
-    "exact_match": 0.0,
-    "json_valid": 0.0,
-    "latency_p50_ms": 2,
-    "latency_p95_ms": 4
+    "category_acc": 0.9245,
+    "urgency_acc": 0.6038,
+    "escalate_acc": 0.7453,
+    "exact_match": 0.5,
+    "json_valid": 1.0,
+    "latency_p50_ms": 420,
+    "latency_p95_ms": 500
   },
   "details": [
     {
@@ -18,16 +18,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 18,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 26732
     },
     {
       "question": "如果係法定假日當日我要調假去週末，薪酬會否變少？",
@@ -36,16 +39,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 4,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 410
     },
     {
       "question": "如果我申請年假被拒絕，咗唔知我有權強逼公司批准嗎？",
@@ -54,16 +60,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 4,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 423
     },
     {
       "question": "如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？",
@@ -72,16 +81,19 @@
         "urgency": "high",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 491
     },
     {
       "question": "如果我請病假超過七日，公司要通知我返覆醫生報告嘅期限係幾時？",
@@ -90,16 +102,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 440
     },
     {
       "question": "年假係由雇主定邊日放，還是我要自選日子？有無限制？",
@@ -108,16 +123,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 403
     },
     {
       "question": "年假到期未請完，公司會唔會強行扣除我嘅工資？",
@@ -126,16 +144,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 401
     },
     {
       "question": "我係兼職員工，邊度查下我應該有幾多日公假同埋年假？",
@@ -144,16 +165,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 528
     },
     {
       "question": "我哋公司係小型企業，請假條需要點樣填寫先至算數？",
@@ -162,16 +186,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 4,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 404
     },
     {
       "question": "我哋公司規定年假最多只能請 15 天，多咗嘅日子點算？",
@@ -180,16 +207,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 400
     },
     {
       "question": "我哋請咗事病假，公司要我去醫院檢查健康狀況，點算先有資格返工？",
@@ -198,16 +228,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 415
     },
     {
       "question": "我哋請咗有薪病假後返工，但身體未完全好，點算先可以繼續請假無影響工資？",
@@ -216,16 +249,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 413
     },
     {
       "question": "我已經請咗足 7 日事假啦，而家公司話要扣我半個月糧，係咪做錯嘢？",
@@ -234,16 +270,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 403
     },
     {
       "question": "我請咗年假之後公司取消安排，話要用掉我個假，我可以點樣維護權益？",
@@ -252,16 +291,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 404
     },
     {
       "question": "法定假日如果遇上週末，係咪自動轉咗做另一個休息日？",
@@ -270,16 +312,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 479
     },
     {
       "question": "法定假日若遇到我已經請咗病假，公司應該點樣處理佢日薪？",
@@ -288,16 +333,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 430
     },
     {
       "question": "請問休息日放假係咪一定要補假先可以唔用錢？",
@@ -306,16 +354,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 407
     },
     {
       "question": "「自動離職」同「被解僱」有什麼分別？如果我誤會咗情況會有什麼後果？",
@@ -324,16 +375,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 449
     },
     {
       "question": "佢哋想用「違反員工守則」做理由開除我，但之前從未警告過我，咁樣做法對唔對？",
@@ -342,16 +396,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 497
     },
     {
       "question": "僱主能否單方面更改合約入面關於工作地點嘅條款？",
@@ -360,16 +417,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 521
     },
     {
       "question": "入職兩年半，老闆以違反公司規章為由要辭退我，但個規章我從未讀過，呢個解僱合法嗎？",
@@ -378,16 +438,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 445
     },
     {
       "question": "公司因為經濟欠佳要裁員，咁樣做到算係合理解僱嗎？需要符合什麼程序？",
@@ -396,16 +459,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 432
     },
     {
       "question": "公司突然將我調去一個遙遠嘅地方工作，而我拒絕咗，佢哋話係擅自改約，我可以點做？",
@@ -414,16 +480,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 436
     },
     {
       "question": "公司話我犯錯要即時辭退，但之前無警告过我，咁樣直接開除係咪符合程序？",
@@ -432,16 +501,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 430
     },
     {
       "question": "如果我係兼職員工但公司想逐走我，有咩法例保障？",
@@ -450,16 +522,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 454
     },
     {
       "question": "我係外派員工，公司想轉返總公司工作但我唔想去，佢哋可以強迫我去嗎？",
@@ -468,16 +543,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": false,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 409
     },
     {
       "question": "我個合約寫住要俾 30 日通知期，但公司只派咗我一封信就要我即刻走，點算先至係合法？",
@@ -486,16 +564,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 484
     },
     {
       "question": "我喺公司唔停數月，但老闆一直無同我一齊簽書面合約，如果今日被炒，點算先至有保障？",
@@ -504,16 +585,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "high",
+        "escalate": true
+      },
       "hit": {
         "category": false,
         "urgency": false,
-        "escalate": false
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 399
     },
     {
       "question": "我收到老闆傳真通知即刻走人，根本無時間收拾個人事物，我有權要求多幾日通知期嗎？",
@@ -522,16 +606,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 440
     },
     {
       "question": "我而家係兼職員工，如果老闆想隨時開除我，需要通知期嗎？",
@@ -540,16 +627,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 476
     },
     {
       "question": "雇主話我犯咗錯就要辭退，但我唔承認，點算？",
@@ -558,16 +648,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 543
     },
     {
       "question": "點先可以證明間公司嘅解僱決定係「不合理」嘅？",
@@ -576,16 +669,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 449
     },
     {
       "question": "點樣定義「嚴重失職」至可以即刻終止合約而無須通知期？",
@@ -594,16 +690,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 450
     },
     {
       "question": "點樣才算係「合理」嘅解僱程序？需要幾多個證明人證詞先算數？",
@@ -612,16 +711,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 448
     },
     {
       "question": "點算先可以證明老闆係無理地解僱我，而唔係因為表現欠佳？",
@@ -630,16 +732,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 450
     },
     {
       "question": "什麼是「實報實銷」的津貼？如果僱主規定所有開支必須由員工自付才獲發津貼，這是否違規？",
@@ -648,16 +753,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 431
     },
     {
       "question": "公司從我的薪金扣除「培訓費」和「工具押金」，但沒有發出書面通知，這樣做合法嗎？",
@@ -666,16 +774,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 498
     },
     {
       "question": "公司说因为我迟到十分钟所以要扣我全日工资的一半，请问呢个做法系咪对？",
@@ -684,16 +795,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 436
     },
     {
       "question": "公司遲咗兩星期出糧，而家又要扣減我上個月嘅加班費，點算先公道？",
@@ -702,16 +816,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 4,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 434
     },
     {
       "question": "兼職員工如果唔做咗半天工，公司可以扣走所有半日薪金嗎？",
@@ -720,16 +837,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 434
     },
     {
       "question": "如果公司用「培训费」或者「服装费」名目扣减我嘅薪金，而我又唔记得有签署过相关协议，咁样做合符法例吗？",
@@ -738,16 +858,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 428
     },
     {
       "question": "如果我係清潔工，點算先知道我每日應該收到幾多錢先符合最低工資標準？",
@@ -756,16 +879,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 475
     },
     {
       "question": "我個月做完咗超過 48 小時工時，但下個月出糧只係按正常時薪畀，差嘅部分點申請？",
@@ -774,16 +900,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 418
     },
     {
       "question": "我個月底薪係固定，但老闆最近好多次無給加班費就係邊度投訴？",
@@ -792,16 +921,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 413
     },
     {
       "question": "我入職三年，老闆今日突然話要減我嘅時薪由$45 改為$30，可以同意嗎？",
@@ -810,16 +942,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 417
     },
     {
       "question": "我喺同一間公司做咗好多年，但最近老闆話無錢出糧，我想問有無辦法保障自己嘅權益？",
@@ -828,16 +963,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 435
     },
     {
       "question": "我生病請咗假後返工，公司卻話要扣少啲錢做作「病假扣除」，咁係咪對？",
@@ -846,16 +984,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
         "category": false,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 396
     },
     {
       "question": "最低工資計埋加班費同津貼後，係咪要超過每小時$48.25？",
@@ -864,16 +1005,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 435
     },
     {
       "question": "老闆以「表現唔好」為理由扣減我個月薪金，咁做合法嗎？",
@@ -882,16 +1026,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 5,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 499
     },
     {
       "question": "老闆話因為公司經營困難，暫時停發我兩個月嘅薪金，我可以接受嗎？",
@@ -900,16 +1047,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 427
     },
     {
       "question": "老闆話我工傷後返工要減薪，咁點算係唔係違法扣薪？",
@@ -918,16 +1068,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 421
     },
     {
       "question": "老闆說因為我請咗事假，所以唔使畀我上個月嘅全薪，只畀做咗日數嘅錢，這是正確做法嗎？",
@@ -936,16 +1089,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 455
     },
     {
       "question": "邊啲情況算係「欠薪」？只係遲咗出糧就算欠薪嗎？",
@@ -954,16 +1110,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 534
     },
     {
       "question": "咩叫做「強制性公積金」（MPF）？邊啪人一定要參加呢個計劃呀？",
@@ -972,16 +1131,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 4,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 392
     },
     {
       "question": "咩叫做「自動提款權」？邊啪人擁有呢個權利可以隨便取數出嚟呀？",
@@ -990,16 +1152,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 388
     },
     {
       "question": "咩叫做「豁免入息」? 邊啲錢唔使計入 MPF 供款底數？",
@@ -1008,16 +1173,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 402
     },
     {
       "question": "咩叫做強制性公積金 (MPF)?",
@@ -1026,16 +1194,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 380
     },
     {
       "question": "咩叫做強制性公積金（MPF）回扣？雇主仲可以收取額外費用咩？",
@@ -1044,16 +1215,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 403
     },
     {
       "question": "咩叫做強制性公積金（MPF），邊啲人需要買、邊啲人唔使買啊？",
@@ -1062,16 +1236,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 404
     },
     {
       "question": "我係家庭主婦重返職場，做兼職清潔工，公司話唔使開具僱傭合約亦唔交強積金，點算先有資格受保障？",
@@ -1080,16 +1257,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": true
+      },
       "hit": {
         "category": false,
-        "urgency": false,
+        "urgency": true,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": true}",
+      "latency_ms": 434
     },
     {
       "question": "我個月入息有變，雇主要唔要重新計算我要供多少錢 MPF? 點先至準確?",
@@ -1098,16 +1278,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 473
     },
     {
       "question": "我個月只做得五日工，算唔算全職？邊度可以查詢我嘅 MPF 供款紀錄？",
@@ -1116,16 +1299,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 388
     },
     {
       "question": "我個老闆話公司破產咗，但之前未俾我打全 MPF, 我會唔會失晒保障？",
@@ -1134,16 +1320,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 381
     },
     {
       "question": "我入職五年後退休，個老闆話遣散費同長期服務金已經包括喺俾我之前嘅全薪裡面了，請問呢個講法係咪有道理？",
@@ -1152,16 +1341,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": false,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 396
     },
     {
       "question": "我入職兩年半，而家想知邊樣嘅 MPF 產品適合年輕員工？有咩特別優惠或者低費率嘅選擇呀？",
@@ -1170,16 +1362,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 470
     },
     {
       "question": "我如果去美國住返 5 年然後再返嚟香港工作，我邊間公司應該負責幫我繼續買強積金？",
@@ -1188,16 +1383,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 396
     },
     {
       "question": "我已經退休了，但公司仲幫我轉 MPF 咗兩個月，呢筆錢點算先可以領落嚟？",
@@ -1206,16 +1404,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 350
     },
     {
       "question": "我最近轉職咗，新公司話唔可以幫我去申請轉移舊間公司嘅 MPF 資金，只係要我手頭上供，到底點算先係正確程序？",
@@ -1224,16 +1425,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 370
     },
     {
       "question": "我發現老板將個名寫錯咗，俾唔係本人嘅 MPF 帳戶供錢，而係自己搞一個假戶口收走啲供款，這算唔算違法？",
@@ -1242,16 +1446,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 384
     },
     {
       "question": "聽講好似有『自願性公積金』同埋『退休審批計劃』咩分別？點先可以申請加入？",
@@ -1260,16 +1467,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 403
     },
     {
       "question": "雇主話我個月賺唔夠最低工資，所以可以少咗交強制性公積金，呢種講法對唔對？",
@@ -1278,16 +1488,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 415
     },
     {
       "question": "公司叫我做嘅係清潔工，但我之前已經喺邊度搵過類似工作，呢種算唔算重組員工？",
@@ -1296,16 +1509,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 398
     },
     {
       "question": "如果我只係做過幾個鐘頭就得返屋企，就算唔係正式工，有無權利收薪金？",
@@ -1314,16 +1530,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": false,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 500
     },
     {
       "question": "如果我只係參與某個短期培訓課程並獲派工作，期間嘅身份應點定義為受僱還是學員？",
@@ -1332,16 +1551,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 401
     },
     {
       "question": "我係外判公司派到工地做工，邊度決定我受《僱傭條例》保障定唔？",
@@ -1350,16 +1572,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 399
     },
     {
       "question": "我入職唔知幾時，個老闆最近突然話我係自由身，要即刻走，我有無資格申請補償同埋受保護？",
@@ -1368,16 +1593,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 400
     },
     {
       "question": "我已經跟同一間公司工作五年，但最近幾個月主要係做自由職業，請問我現時嘅身份點算受保障？",
@@ -1386,16 +1614,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 421
     },
     {
       "question": "老闆同我講我係獨立承包商，但每日都要去上工由佢派活，咁樣算唔算僱用關係？",
@@ -1404,16 +1635,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 462
     },
     {
       "question": "老闆用假自僱合約掩飾實際僱用關係，我想確認自己究竟有咩資格受保護，可以求助邊度？",
@@ -1422,16 +1656,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 415
     },
     {
       "question": "老闆話我係「獨立合約商」但其實要我買公司嘅制服同設備，點算先知道真係受雇未？",
@@ -1440,16 +1677,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": true}",
+      "latency_ms": 410
     },
     {
       "question": "老闆話我係「自僱人士」所以唔使交強積金同埋要守合約，但其實我每日都係佢開支令上班，算邊類人？",
@@ -1458,16 +1698,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": true}",
+      "latency_ms": 411
     },
     {
       "question": "老闆話我係「顧問」所以唔使交強積金，但我都要喺公司打卡上落班，點算先知邊度屬於僱傭關係？",
@@ -1476,16 +1719,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": true}",
+      "latency_ms": 429
     },
     {
       "question": "老闆話我係自由職業者（自僱），唔洗簽僱傭合約，我點樣證明其實我受雇主管理？",
@@ -1494,16 +1740,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 400
     },
     {
       "question": "自僱人士同受僱者有咩分別？點解有人話自僱唔使交強積金？",
@@ -1512,16 +1761,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 442
     },
     {
       "question": "邊啲人士係完全唔受《僱傭條例》保障嘅？例如學生實習生同埋家庭幫手分別點處理？",
@@ -1530,16 +1782,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 476
     },
     {
       "question": "邊度定義「長期服務關係」同「短期僱傭關係」嘅分界線？",
@@ -1548,16 +1803,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 399
     },
     {
       "question": "邊種身份嘅勞工先可以申請強制性公積金及受《僱傭條例》保障？",
@@ -1566,16 +1824,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": false,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 402
     },
     {
       "question": "邊類合約條款先代表我係受僱員工而唔係自僱人士？",
@@ -1584,16 +1845,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 398
     },
     {
       "question": "佢話我係兼職員工，所以無資格攞遣散費，邊樣工種先至有資格領？點算先算足三年服務期？",
@@ -1602,16 +1866,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 427
     },
     {
       "question": "個老闆話我因為表現唔好被辭退，但佢無簽解僱信亦無俾通告期，而家只係想避開俾遣散費，我有辦法追返嗎？",
@@ -1620,16 +1887,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "離職補償",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 448
     },
     {
       "question": "做兼職有無遣散費啊？",
@@ -1638,16 +1908,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 407
     },
     {
       "question": "做咗一個月就走，算唔算入遣散費計算期數裡面？",
@@ -1656,16 +1929,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 418
     },
     {
       "question": "公司清盤，我個個戶頭剩返咗幾多錢先算遣散費？",
@@ -1674,16 +1950,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 433
     },
     {
       "question": "公司話我犯錯所以要即時解僱無通知期，但其實佢未畀我機會申辯，我要唔要錢？點算先有資格拿遣散費？",
@@ -1692,16 +1971,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "離職補償",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 414
     },
     {
       "question": "咁樣係咪表示公司必須付遣散費？",
@@ -1710,16 +1992,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 407
     },
     {
       "question": "咩叫做遣散費呀？同長期服務金有分別咩？",
@@ -1728,16 +2013,19 @@
         "urgency": "low",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "low",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 419
     },
     {
       "question": "我係兼職，做咗三年，辭退後有無權拿遣散費？",
@@ -1746,16 +2034,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 463
     },
     {
       "question": "我係臨時工，做咗一年就走，有無遣散費？",
@@ -1764,16 +2055,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 407
     },
     {
       "question": "我個月尾就唔使返工，公司應該幾時出遣散費俾我？",
@@ -1782,16 +2076,19 @@
         "urgency": "medium",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 4,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 419
     },
     {
       "question": "我個老闆話因為我唔肯加班所以要辭我，但其實我無被通知過要加班，我要唔要錢？點算先有資格拿遣散費？",
@@ -1800,16 +2097,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "離職補償",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 413
     },
     {
       "question": "我做咗三年半工，而家公司話要重组，我知唔知道點算先有資格拿遣散費？",
@@ -1818,16 +2118,19 @@
         "urgency": "medium",
         "escalate": false
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 498
     },
     {
       "question": "我已經喺同一家公司做咗十六年，如果今日被解僱，遣散費係幾多錢？",
@@ -1836,16 +2139,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "離職補償",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 404
     },
     {
       "question": "我想知如果公司倒閉清盤，我仲可以咩辦法追討遣散費同長期服務金？",
@@ -1854,16 +2160,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 397
     },
     {
       "question": "我請咗好多年假，而家被辭退，假期日數點影響遣散費金額？",
@@ -1872,16 +2181,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
       "hit": {
-        "category": false,
+        "category": true,
         "urgency": false,
         "escalate": false
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 2,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 408
     },
     {
       "question": "老闆話俾我知要即刻走，但唔肯簽解僱書，我點樣確認遣散費數額？",
@@ -1890,16 +2202,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
-      "hit": {
-        "category": false,
-        "urgency": false,
-        "escalate": false
+      "pred": {
+        "category": "離職補償",
+        "urgency": "high",
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 440
     },
     {
       "question": "老闆話我嘅表現唔好所以要即時走人，而家連最後月薪都仲未出，點算？",
@@ -1908,16 +2223,19 @@
         "urgency": "high",
         "escalate": true
       },
-      "pred": null,
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
+      },
       "hit": {
         "category": false,
-        "urgency": false,
-        "escalate": false
+        "urgency": true,
+        "escalate": true
       },
-      "attempts": 3,
-      "raw": "",
-      "latency_ms": 3,
-      "error": "HTTPError: HTTP Error 404: Not Found"
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 440
     }
   ]
 }

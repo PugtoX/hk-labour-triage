@@ -1,0 +1,18 @@
+=== 2026-10-10 18:17:03 ===
+$ ollama ps; echo '=== 显存 ===';  nvidia-smi --query-gpu=utilization.gpu,memory.used,memory.total --format=csv;  echo '=== 单条请求计时（num_predict=16）===';  time curl -s http://localhost:11434/api/generate    -d '{"model":"qwen3.5:9b","prompt":"你好","stream":false,"options":{"num_predict":16,"num_ctx":2048}}'    -o /dev/null
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+NAME          ID              SIZE      PROCESSOR    CONTEXT    UNTIL              
+qwen3.5:9b    56671c2ab938    5.5 GB    100% GPU     2048       4 minutes from now    
+=== 显存 ===
+utilization.gpu [%], memory.used [MiB], memory.total [MiB]
+99 %, 7766 MiB, 8192 MiB
+=== 单条请求计时（num_predict=16）===
+
+real	0m56.401s
+user	0m0.012s
+sys	0m0.007s
+
+=== exit code: 0 ===
