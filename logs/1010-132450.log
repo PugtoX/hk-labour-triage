@@ -1,0 +1,14 @@
+=== 2026-10-10 13:24:50 ===
+$ gh auth status 2>&1 | head -6
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+github.com
+  ✓ Logged in to github.com account PugtoX (/home/hugoy/.config/gh/hosts.yml)
+  - Active account: true
+  - Git operations protocol: https
+  - Token: gho_************************************
+  - Token scopes: 'gist', 'read:org', 'repo', 'workflow'
+
+=== exit code: 0 ===

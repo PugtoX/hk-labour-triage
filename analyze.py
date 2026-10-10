@@ -78,6 +78,21 @@ def exact_hits(details: list[dict]) -> list[bool]:
 def report(name: str, details: list[dict]) -> dict:
     n = len(details)
     print(f"\n=== {name}  (n={n}) ===")
+    # An unusable prediction is a measurement failure, not a wrong answer. Say so
+    # loudly — otherwise every class reads as 0% and a broken serving path looks
+    # like a catastrophically bad model.
+    unusable = sum(1 for d in details if not d.get("pred"))
+    if unusable:
+        print(f"  [!] {unusable}/{n} predictions unparseable — the scores below "
+              f"are NOT a model result. Check the serving path first.")
+        # evaluate.py already stores the raw reply on failure; surface one so the
+        # cause is visible without re-running anything.
+        for d in details:
+            if not d.get("pred"):
+                print(f"      sample raw: {d.get('raw', '')[:160]!r}")
+                if d.get("error"):
+                    print(f"      error: {d['error']}")
+                break
     cm = Counter((d["gold"]["urgency"], (d["pred"] or {}).get("urgency"))
                  for d in details)
     hits = {f: [] for f in ("urgency",)}
@@ -143,7 +158,11 @@ def main() -> None:
                     and x["pred"]["urgency"] == y["pred"]["urgency"])
         pairs = sum(1 for x, y in zip(details[first], details[second])
                     if x["pred"] and y["pred"])
-        print(f"  urgency agreement: {agree}/{pairs} = {agree / pairs:.1%}")
+        if pairs:
+            print(f"  urgency agreement: {agree}/{pairs} = {agree / pairs:.1%}")
+        else:
+            print("  urgency agreement: n/a — no row has a parseable prediction "
+                  "in both dumps")
 
         print("=== both models agree, gold differs (candidate label errors) ===")
         found = 0

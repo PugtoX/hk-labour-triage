@@ -1,0 +1,19 @@
+=== 2026-10-10 13:08:54 ===
+$ python export_model.py
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+W1010 13:09:01.790000 2848 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1010 13:09:01.838000 2848 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+[i] base=Qwen/Qwen3-1.7B  adapter=/home/hugoy/projects/hk-labour-triage/models/triage-lora
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<00:51,  6.02it/s]Loading weights:   9%|▉         | 28/311 [00:00<00:02, 125.32it/s]Loading weights:  16%|█▌        | 50/311 [00:00<00:01, 140.51it/s]Loading weights:  23%|██▎       | 71/311 [00:00<00:01, 147.43it/s]Loading weights:  32%|███▏      | 101/311 [00:00<00:01, 179.32it/s]Loading weights:  39%|███▉      | 121/311 [00:00<00:01, 178.13it/s]Loading weights:  46%|████▌     | 142/311 [00:00<00:00, 171.13it/s]Loading weights:  52%|█████▏    | 162/311 [00:01<00:00, 177.75it/s]Loading weights:  58%|█████▊    | 181/311 [00:01<00:00, 167.89it/s]Loading weights:  68%|██████▊   | 210/311 [00:01<00:00, 185.49it/s]Loading weights:  75%|███████▍  | 232/311 [00:01<00:00, 192.67it/s]Loading weights:  81%|████████  | 252/311 [00:01<00:00, 181.20it/s]Loading weights:  88%|████████▊ | 274/311 [00:01<00:00, 183.88it/s]Loading weights:  94%|█████████▍| 293/311 [00:01<00:00, 180.73it/s]Loading weights: 100%|██████████| 311/311 [00:01<00:00, 173.30it/s]
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]Writing model shards: 100%|██████████| 1/1 [00:02<00:00,  2.93s/it]
+[i] merged model -> /home/hugoy/projects/hk-labour-triage/models/triage-merged
+[i] Modelfile -> /home/hugoy/projects/hk-labour-triage/models/triage-merged/Modelfile
+
+[next] ollama create triage-1.7b -f /home/hugoy/projects/hk-labour-triage/models/triage-merged/Modelfile
+[next] python evaluate.py --model triage-1.7b --data data/test.jsonl --out v4_ollama_ft.json
+
+=== exit code: 0 ===

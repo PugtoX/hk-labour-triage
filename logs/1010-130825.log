@@ -1,3 +1,17 @@
 === 2026-10-10 13:08:25 ===
 $ git --version; echo '--- gh ---'; gh --version 2>&1 | head -2; echo '--- identity ---'; git config --global user.name; git config --global user.email; echo '--- repo? ---'; git rev-parse --is-inside-work-tree 2>&1 | head -1
 
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+git version 2.53.0
+--- gh ---
+gh version 2.46.0 (2025-12-13 Ubuntu 2.46.0-4)
+https://github.com/cli/cli/releases/tag/v2.46.0
+--- identity ---
+Kin Ho
+hugoyuan2004@gmail.com
+--- repo? ---
+fatal: not a git repository (or any of the parent directories): .git
+
+=== exit code: 128 ===
