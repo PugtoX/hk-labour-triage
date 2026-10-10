@@ -1,3 +1,22 @@
 === 2026-10-10 13:24:58 ===
 $ git init && git add . &&  git commit -m 'HK labour enquiry triage: fp16 LoRA on Qwen3-1.7B' -m 'Three-way comparison (9B / 1.7B base / 1.7B LoRA) with paired McNemar tests. Fine-tuning is highly significant (p=0.000); the adapter beats 9B on urgent-case recall (75.7%% vs 37.8%%) at 41%% lower weighted cost. Documents two mid-project self-corrections: a conclusion reversed by test-set size, and a label/serving prompt drift (p=0.003).' &&  gh repo create hk-labour-triage --public --source=. --push
 
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+Reinitialized existing Git repository in /home/hugoy/projects/hk-labour-triage/.git/
+[master 322d1f9] HK labour enquiry triage: fp16 LoRA on Qwen3-1.7B
+ 12 files changed, 2238 insertions(+), 1 deletion(-)
+ create mode 100755 logs/1010-130854.log
+ create mode 100755 logs/1010-130956.log
+ create mode 100755 logs/1010-130959.log
+ create mode 100755 logs/1010-131003.log
+ create mode 100755 logs/1010-131135.log
+ create mode 100755 logs/1010-131137.log
+ create mode 100755 logs/1010-131222.log
+ create mode 100755 logs/1010-132450.log
+ create mode 100755 logs/1010-132458.log
+ create mode 100644 v4_ollama_ft.json
+GraphQL: Name already exists on this account (createRepository)
+
+=== exit code: 1 ===
