@@ -1,0 +1,21 @@
+=== 2026-10-10 13:34:57 ===
+$ echo '=== branch ==='; git branch -a;  echo '=== remote ==='; git remote -v;  echo '=== log ==='; git log --oneline -3;  echo '=== uncommitted ==='; git status --short
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+=== branch ===
+* main
+  remotes/origin/master
+=== remote ===
+origin	https://github.com/PugtoX/hk-labour-triage.git (fetch)
+origin	https://github.com/PugtoX/hk-labour-triage.git (push)
+=== log ===
+e180c12 HK labour enquiry triage: fp16 LoRA on Qwen3-1.7B
+6587b3e HK labour enquiry triage: fp16 LoRA on Qwen3-1.7B
+322d1f9 HK labour enquiry triage: fp16 LoRA on Qwen3-1.7B
+=== uncommitted ===
+ M logs/1010-133208.log
+?? logs/1010-133457.log
+
+=== exit code: 0 ===

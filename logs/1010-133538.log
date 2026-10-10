@@ -1,0 +1,3 @@
+=== 2026-10-10 13:35:38 ===
+$ git add . && git commit -m 'Add v4 Ollama deployment run and analysis guards' -m 'analyze.py now warns loudly on unparseable predictions and shows a sample raw reply, and bails out instead of dividing by zero. check_facts.py no longer false-positives on 最低工資法例.' && git push
+
