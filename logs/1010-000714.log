@@ -1,0 +1,6 @@
+=== 2026-10-10 00:07:14 ===
+$ python evaluate.py --data data/test.frozen.jsonl --out baseline_9b.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+

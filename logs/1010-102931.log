@@ -1,0 +1,48 @@
+=== 2026-10-10 10:29:31 ===
+$ python analyze.py baseline_9b.json baseline_9b_full.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+=== baseline_9b.json  (n=46) ===
+  urgency high    recall=  5/12  =  41.7% [19%-68%]   precision=100.0% (5/5)   {'high': 5, 'medium': 7}
+  urgency medium  recall= 16/18  =  88.9% [67%-97%]   precision=61.5% (16/26)   {'low': 2, 'medium': 16}
+  urgency low     recall= 13/16  =  81.2% [57%-93%]   precision=86.7% (13/15)   {'low': 13, 'medium': 3}
+
+=== baseline_9b_full.json  (n=46) ===
+  urgency high    recall=  1/12  =   8.3% [1%-35%]   precision=100.0% (1/1)   {'high': 1, 'medium': 11}
+  urgency medium  recall= 17/18  =  94.4% [74%-99%]   precision=43.6% (17/39)   {'low': 1, 'medium': 17}
+  urgency low     recall=  5/16  =  31.2% [14%-56%]   precision=83.3% (5/6)   {'low': 5, 'medium': 11}
+
+=== cost (gold=high missed costs 3x) ===
+  baseline_9b.json         cost= 26 over n=46  = 57 per 100
+  baseline_9b_full.json    cost= 45 over n=46  = 98 per 100
+  -> lower cost is better: ['baseline_9b.json', 'baseline_9b_full.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: baseline_9b.json=19  baseline_9b_full.json=34   order=['baseline_9b.json', 'baseline_9b_full.json']
+    x3: baseline_9b.json=26  baseline_9b_full.json=45   order=['baseline_9b.json', 'baseline_9b_full.json']
+    x5: baseline_9b.json=40  baseline_9b_full.json=67   order=['baseline_9b.json', 'baseline_9b_full.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 11, 'medium': 2}
+  escalate=False {'high': 1, 'medium': 16, 'low': 16}
+
+=== paired McNemar: baseline_9b.json vs baseline_9b_full.json ===
+  urgency      baseline_9b.json only=12  baseline_9b_full.json only=1  McNemar p=0.003  -> SIGNIFICANT
+  exact_match  baseline_9b.json only=12  baseline_9b_full.json only=2  McNemar p=0.013  -> SIGNIFICANT
+  urgency agreement: 33/46 = 71.7%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 1] gold=low     both_models=medium  侍產假係咪只要生咗仔就得請？如果有幾個星期需要休息應該點樣申請先至合規？
+  [ 7] gold=high    both_models=medium  我請咗年假後發現公司之前冇補我上個月嘅事假，而家要追回有咩難度？
+  [12] gold=high    both_models=medium  合約上寫住『無須通知』但雇主真係想即刻走人，有咩法例保護？
+  [15] gold=high    both_models=medium  雇主話我犯咗錯就要辭退，但我唔承認，點算？
+  [16] gold=low     both_models=medium  點樣定義「嚴重失職」至可以即刻終止合約而無須通知期？
+  [18] gold=high    both_models=medium  公司將我底薪由一萬減至八千，但話係加薪表現獎金，請問這種名義減薪是否被容許？
+  [26] gold=high    both_models=medium  如果我辭職，前東家會喺幾耐內補交我所有未付嘅強制性公積金供款？
+  [30] gold=medium  both_models=low     我想問緊 MPF 係咪只可以喺銀行戶口取返？點算先可以申請把錢轉去另一個基金？
+  [35] gold=high    both_models=medium  我個老闆話我係合約制，所以無假，但其實我做住同佢一樣長年累月，我有無權受保護？
+  [40] gold=low     both_models=medium  做咗兩年整，係咪算唔到三年？
+  [44] gold=high    both_models=medium  辭退通知信入面冇寫遣散費金額，我可以要求幾多？
+
+=== exit code: 0 ===

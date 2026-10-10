@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Generated DATA and WEIGHTS are excluded: large, and fully regenerable from the
+# scripts. Keeping them out also keeps the repo honest — the numbers in
+# BASELINE.md are reproducible from code, not from committed artefacts.
+data/
+models/
+
+# NOT excluded on purpose:
+#   logs/*.log      — experiment transcripts, small text, cited by BASELINE.md
+#   v*_*.json       — per-item gold/pred dumps, the raw evidence behind the tables
+# Only the convenience copy is dropped so the same bytes are not stored twice.
+logs/latest.log

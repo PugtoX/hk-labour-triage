@@ -1,0 +1,15 @@
+=== 2026-10-10 01:02:35 ===
+$ python review.py --file /tmp/u20.jsonl --wrong-urgency 3,7,12
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+rows judged: 20
+
+category : NOT JUDGED
+urgency  : 17/20 = 85.0%  (line 90%)  FAIL   wrong: [3, 7, 12]
+escalate : NOT JUDGED
+
+NOT ALL PASS — 先修數據，不要拿去訓練
+
+=== exit code: 0 ===

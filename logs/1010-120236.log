@@ -1,0 +1,29 @@
+=== 2026-10-10 12:02:36 ===
+$ python check_dataset.py &&  python evaluate.py --data data/test.jsonl --out v3_9b.json &&  python train.py --eval-only --no-adapter --no-quant --base Qwen/Qwen3-1.7B --out v3_base.json &&  python train.py --eval-only --no-quant --base Qwen/Qwen3-1.7B --out v3_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] dropped 13 duplicate text(s) (717 -> 704)
+[i] rows: 704
+    categories covered: 6/6
+    urgency:  {'high': 225, 'low': 178, 'medium': 301}
+    escalate: {True: 299, False: 405}
+    text length: min=10 median=32 max=63
+    duplicate texts: 0   conflicting labels: 0
+
+[i] split: train=492 val=106 test=106
+[i] wrote data/train.jsonl, val.jsonl, test.jsonl
+[i] spot-check 32 rows -> data/review_sample.jsonl
+
+[!] BEFORE TRAINING: read review_sample.jsonl and fix wrong labels.
+    Synthetic data always contains some — SPEC.md requires >=10% review.
+[i] model=qwen3.5:9b  data=data/test.jsonl  n=106  system=short (379 chars)
+
+[  1/106] ✗  70.4s  休息日加班之後可以補假還是必須給薪？兩者分別點計？   urgency: gold='low'->pred='medium'
+[  2/106] ✓ 480.7s  如果係法定假日當日我要調假去週末，薪酬會否變少？   (retry x2)
+[  3/106] ✓  28.3s  如果我申請年假被拒絕，咗唔知我有權強逼公司批准嗎？
+[  4/106] ✗  10.1s  如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？   urgency: gold='high'->pred='medium'
+[  5/106] ✗   3.5s  如果我請病假超過七日，公司要通知我返覆醫生報告嘅期限係幾時？   urgency: gold='low'->pred='medium'
+[  6/106] ✗  10.6s  年假係由雇主定邊日放，還是我要自選日子？有無限制？   urgency: gold='low'->pred='medium'
+[  7/106] ✗  21.3s  年假到期未請完，公司會唔會強行扣除我嘅工資？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False

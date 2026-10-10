@@ -1,0 +1,36 @@
+=== 2026-10-10 09:52:40 ===
+$ python train.py --eval-only --no-adapter --no-quant --base Qwen/Qwen3-1.7B --out base_17b.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+W1010 09:52:46.421000 811 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1010 09:52:46.465000 811 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+[i] train system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] test system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<03:08,  1.65it/s]Loading weights:   1%|          | 2/311 [00:01<03:08,  1.64it/s]Loading weights:   5%|▌         | 16/311 [00:01<00:16, 17.57it/s]Loading weights:  10%|█         | 32/311 [00:01<00:07, 36.99it/s]Loading weights:  14%|█▍        | 45/311 [00:01<00:05, 51.05it/s]Loading weights:  19%|█▊        | 58/311 [00:01<00:03, 65.12it/s]Loading weights:  23%|██▎       | 72/311 [00:01<00:03, 77.87it/s]Loading weights:  28%|██▊       | 87/311 [00:01<00:02, 92.99it/s]Loading weights:  32%|███▏      | 100/311 [00:02<00:02, 97.81it/s]Loading weights:  36%|███▌      | 112/311 [00:02<00:01, 102.21it/s]Loading weights:  41%|████      | 126/311 [00:02<00:01, 107.48it/s]Loading weights:  44%|████▍     | 138/311 [00:02<00:01, 107.24it/s]Loading weights:  49%|████▉     | 153/311 [00:02<00:01, 118.21it/s]Loading weights:  53%|█████▎    | 166/311 [00:02<00:01, 114.35it/s]Loading weights:  58%|█████▊    | 181/311 [00:02<00:01, 113.38it/s]Loading weights:  62%|██████▏   | 193/311 [00:02<00:01, 114.49it/s]Loading weights:  67%|██████▋   | 207/311 [00:02<00:00, 119.53it/s]Loading weights:  71%|███████   | 221/311 [00:03<00:00, 120.83it/s]Loading weights:  75%|███████▌  | 234/311 [00:03<00:00, 115.96it/s]Loading weights:  79%|███████▉  | 246/311 [00:03<00:00, 116.41it/s]Loading weights:  83%|████████▎ | 258/311 [00:03<00:00, 116.91it/s]Loading weights:  87%|████████▋ | 270/311 [00:03<00:00, 110.34it/s]Loading weights:  92%|█████████▏| 285/311 [00:03<00:00, 116.19it/s]Loading weights:  96%|█████████▌| 299/311 [00:03<00:00, 118.22it/s]Loading weights: 100%|██████████| 311/311 [00:03<00:00, 82.54it/s] 
+[i] gradient checkpointing enabled: True
+[i] BASE model only (no adapter) — the control run
+    [dist] category: acc=69.6% majority=17.4% pred={'假期與休假': 9, '合約與解僱': 20, '工資與扣薪': 9, '退休與福利': 6, '適用範圍': 2}
+    [dist] urgency: acc=37.0% majority=39.1% pred={'high': 30, 'medium': 16}   [!] no better than majority (39.1%)
+    [dist] escalate: acc=54.3% majority=71.7% pred={True: 30, False: 16}   [!] no better than majority (71.7%)
+    [gen] tokens: min=22 median=24 max=25 (cap 64); 0/46 hit the cap
+    [recall] urgency=high    11/12 = 91.7%
+    [recall] urgency=medium  6/18 = 33.3%
+    [recall] urgency=low     0/16 = 0.0%
+    [cm] urgency gold->pred: {'high->high': 11, 'high->medium': 1, 'low->high': 7, 'low->medium': 9, 'medium->high': 12, 'medium->medium': 6}
+    [out] per-item gold/pred -> base_17b.json
+[i] test: {
+  "category_acc": 0.6956521739130435,
+  "urgency_acc": 0.3695652173913043,
+  "escalate_acc": 0.5434782608695652,
+  "exact_match": 0.2391304347826087,
+  "json_valid": 1.0,
+  "latency_ms_per_item": 961
+}
+
+=== exit code: 0 ===

@@ -1,0 +1,14 @@
+=== 2026-10-10 10:31:28 ===
+$ python synthesize.py --per-category 120
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] model=qwen3.5:9b  per_category=120  categories=6
+[i] resuming with 297 rows already generated
+
+[1/6] 工資與扣薪: have 51, requesting 69 more ...
+  [!] 工資與扣薪: not JSON (Unterminated string starting at: line 65 column 12 (char 6419))
+  [i] attempt 1/3: empty response, retrying
+  [!] 工資與扣薪: not JSON (Expecting property name enclosed in double quotes: line 62 column 43 (char 6310))
+  [i] attempt 2/3: empty response, retrying

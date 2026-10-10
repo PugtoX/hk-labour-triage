@@ -1,0 +1,981 @@
+{
+  "report": {
+    "model": "qwen3.5:9b",
+    "n": 46,
+    "category_acc": 0.9348,
+    "urgency_acc": 0.5,
+    "escalate_acc": 0.7391,
+    "exact_match": 0.4348,
+    "json_valid": 1.0,
+    "latency_p50_ms": 1133,
+    "latency_p95_ms": 2784
+  },
+  "details": [
+    {
+      "question": "侍產假係咪只要生咗仔就得請？如果有幾個星期需要休息應該點樣申請先至合規？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 12431
+    },
+    {
+      "question": "公司通知我要請產假，但我之前未有申請過有薪病假咗咩嘢，點算先可以轉成產假？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": true
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 9344
+    },
+    {
+      "question": "如果我因為個人原因唔想請年假，公司應該點樣處理？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 2389
+    },
+    {
+      "question": "如果我申請年假被拒絕，咗唔知我有權強逼公司批准嗎？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1341
+    },
+    {
+      "question": "我住喺邊個地區，法定假日嘅名單會唔會有分別呀？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "low",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 1656
+    },
+    {
+      "question": "我最近身體欠佳想請病假，請問病假可以請幾多日？如果有醫療證明書應該點樣提交呢？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1479
+    },
+    {
+      "question": "我請咗年假後發現公司之前冇補我上個月嘅事假，而家要追回有咩難度？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 856
+    },
+    {
+      "question": "點算先有資格領法定假日嘅薪酬？如果我去咗旅行未請假會點？",
+      "gold": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 952
+    },
+    {
+      "question": "「即時解僱」同「無須通知期」有咩分別？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "low",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 939
+    },
+    {
+      "question": "佢哋話我因為「公司架構調整」所以要重簽個合約改動職位，但內容完全唔同，點算？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 2784
+    },
+    {
+      "question": "公司突然通知我即刻走人，連預先話都要俾都得唔使給，咁算係咪合法解僱？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1458
+    },
+    {
+      "question": "合約上寫住『無須通知』但雇主真係想即刻走人，有咩法例保護？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1201
+    },
+    {
+      "question": "如果我只係請咗幾天假然後就被辭退，這合理嗎？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1717
+    },
+    {
+      "question": "老闆話我「無效」通知期就逐走我，我可以去勞工處投訴未？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1095
+    },
+    {
+      "question": "雇主話我犯咗錯就要辭退，但我唔承認，點算？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1140
+    },
+    {
+      "question": "點樣定義「嚴重失職」至可以即刻終止合約而無須通知期？",
+      "gold": {
+        "category": "合約與解僱",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "合約與解僱",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"合約與解僱\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1166
+    },
+    {
+      "question": "僱主以「罰款」名義從我薪金扣除一百塊，但我並無違反公司規章，這筆錢可以追回嗎？",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"high\", \"escalate\": true}",
+      "latency_ms": 2227
+    },
+    {
+      "question": "公司將我底薪由一萬減至八千，但話係加薪表現獎金，請問這種名義減薪是否被容許？",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1066
+    },
+    {
+      "question": "公司從我的薪金扣除「培訓費」和「工具押金」，但沒有發出書面通知，這樣做合法嗎？",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1098
+    },
+    {
+      "question": "公司話將我嘅月薪拆成兩個部分出，咁樣做對唔對我？”",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 2439
+    },
+    {
+      "question": "公司話要預扣未來兩個月嘅加班費俾我，因為佢哋覺得我會遲交返嚟，呢個做法合法嗎？",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1034
+    },
+    {
+      "question": "咩叫做「最低工資」？佢係點樣計算嘅？",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "low",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 1040
+    },
+    {
+      "question": "如果我係清潔工，點算先知道我每日應該收到幾多錢先符合最低工資標準？",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 996
+    },
+    {
+      "question": "老板同我说咗要扣除我两日工资俾我做工唔够钟，但我觉得我全程都有出席，点算先至可以追讨回呢笔钱？",
+      "gold": {
+        "category": "工資與扣薪",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 2226
+    },
+    {
+      "question": "如果我係兼職同全日工交替做，公司應該按照邊個身份去計算強積金供款比例？",
+      "gold": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1136
+    },
+    {
+      "question": "如果我辭職，前東家會喺幾耐內補交我所有未付嘅強制性公積金供款？",
+      "gold": {
+        "category": "退休與福利",
+        "urgency": "high",
+        "escalate": false
+      },
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1002
+    },
+    {
+      "question": "我係兼職，公司話唔使交強積金，但我覺得佢講錯咗，點先算有資格？",
+      "gold": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1103
+    },
+    {
+      "question": "我入職兩年半，而家想知邊樣嘅 MPF 產品適合年輕員工？有咩特別優惠或者低費率嘅選擇呀？",
+      "gold": {
+        "category": "退休與福利",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1391
+    },
+    {
+      "question": "我想問下，強制性公積金（MPF）咩叫做『強制』呀？如果我冇參加，公司會幫我開戶嗎？",
+      "gold": {
+        "category": "退休與福利",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 999
+    },
+    {
+      "question": "我想問緊 MPF 係咪只可以喺銀行戶口取返？點算先可以申請把錢轉去另一個基金？",
+      "gold": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "low",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 1108
+    },
+    {
+      "question": "點樣申請提前提取強積金？有邊啲情況係可以提早提走咗個數嘅？",
+      "gold": {
+        "category": "退休與福利",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "退休與福利",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"退休與福利\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1003
+    },
+    {
+      "question": "做住家庭傭工（住家僱員）同一般辦公室員工，邊度受嘅保障唔一樣嗎？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 2297
+    },
+    {
+      "question": "如果我只係做過幾個鐘頭就得返屋企，就算唔係正式工，有無權利收薪金？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "工資與扣薪",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": false,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"工資與扣薪\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1141
+    },
+    {
+      "question": "我係兼職侍應生，而家被話係「自由身」所以唔使補假，但其實我要簽紙頭先可以上樓落班，點算？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": true
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": false,
+        "urgency": true,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1046
+    },
+    {
+      "question": "我個老闆話我係合約制，所以無假，但其實我做住同佢一樣長年累月，我有無權受保護？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "假期與休假",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": false,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"假期與休假\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 2307
+    },
+    {
+      "question": "邊位朋友受僱傭條例保障呢？係咪做满七天才算正式員工呀？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1130
+    },
+    {
+      "question": "邊啲人士係完全唔受《僱傭條例》保障嘅？例如學生實習生同埋家庭幫手分別點處理？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 819
+    },
+    {
+      "question": "邊啲人定義為「自僱人士」會完全不受《僱傭條例》保障？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "low",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"low\", \"escalate\": false}",
+      "latency_ms": 1077
+    },
+    {
+      "question": "邊度先算係僱員？自僜人士點算先有權享受假期同埋醫療保險呀？",
+      "gold": {
+        "category": "適用範圍",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "適用範圍",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"適用範圍\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1963
+    },
+    {
+      "question": "做咗兩年整，係咪算唔到三年？",
+      "gold": {
+        "category": "離職補償",
+        "urgency": "low",
+        "escalate": false
+      },
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1165
+    },
+    {
+      "question": "如果我係合約制員工，合約屆滿後唔續約，我有權拿乜嘢錢？",
+      "gold": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1098
+    },
+    {
+      "question": "我係臨時工，做咗一年就走，有無遣散費？",
+      "gold": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1068
+    },
+    {
+      "question": "辭退信入面寫咗「無賠償」，但其實應該有遣散費點算？",
+      "gold": {
+        "category": "離職補償",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 2201
+    },
+    {
+      "question": "辭退通知信入面冇寫遣散費金額，我可以要求幾多？",
+      "gold": {
+        "category": "離職補償",
+        "urgency": "high",
+        "escalate": true
+      },
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": false,
+        "escalate": false
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1102
+    },
+    {
+      "question": "遣散費同長期服務金可以一齊拿嗎？",
+      "gold": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1032
+    },
+    {
+      "question": "點算先知道自己係咪被「強迫辭退」，而唔係自願離職，因為遣散費數額會唔同？",
+      "gold": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "pred": {
+        "category": "離職補償",
+        "urgency": "medium",
+        "escalate": false
+      },
+      "hit": {
+        "category": true,
+        "urgency": true,
+        "escalate": true
+      },
+      "attempts": 1,
+      "raw": "{\"category\": \"離職補償\", \"urgency\": \"medium\", \"escalate\": false}",
+      "latency_ms": 1095
+    }
+  ]
+}

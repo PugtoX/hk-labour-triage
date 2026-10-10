@@ -1,0 +1,25 @@
+=== 2026-10-10 01:17:01 ===
+$ python -c "
+import json, collections
+d = json.load(open('baseline_9b.json'))
+c = collections.Counter((x['gold']['escalate'], x['gold']['urgency']) for x in d['details'])
+print('gold: escalate x urgency')
+for k in sorted(c, key=str): print('  ', k, c[k])
+cm = collections.Counter((x['gold']['urgency'], x['pred']['urgency']) for x in d['details'])
+print('9B confusion gold->pred:', dict(cm))
+print('9B high recall:', cm[('high','high')], '/', sum(v for (g,_),v in cm.items() if g=='high'))
+"
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+gold: escalate x urgency
+   (False, 'high') 1
+   (False, 'low') 16
+   (False, 'medium') 16
+   (True, 'high') 11
+   (True, 'medium') 2
+9B confusion gold->pred: {('low', 'medium'): 3, ('medium', 'medium'): 16, ('low', 'low'): 13, ('high', 'medium'): 7, ('high', 'high'): 5, ('medium', 'low'): 2}
+9B high recall: 5 / 12
+
+=== exit code: 0 ===

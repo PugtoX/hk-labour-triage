@@ -1,0 +1,67 @@
+=== 2026-10-10 10:28:08 ===
+$ python evaluate.py --data data/test.jsonl --out baseline_9b_full.json --system full
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] model=qwen3.5:9b  data=data/test.jsonl  n=46  system=full (667 chars)
+
+[  1/46] ✗  12.4s  侍產假係咪只要生咗仔就得請？如果有幾個星期需要休息應該點樣申請先至合規？   urgency: gold='low'->pred='medium'
+[  2/46] ✗   9.3s  公司通知我要請產假，但我之前未有申請過有薪病假咗咩嘢，點算先可以轉成產假？   escalate: gold=True->pred=False
+[  3/46] ✗   2.4s  如果我因為個人原因唔想請年假，公司應該點樣處理？   urgency: gold='low'->pred='medium'
+[  4/46] ✓   1.3s  如果我申請年假被拒絕，咗唔知我有權強逼公司批准嗎？
+[  5/46] ✓   1.7s  我住喺邊個地區，法定假日嘅名單會唔會有分別呀？
+[  6/46] ✓   1.5s  我最近身體欠佳想請病假，請問病假可以請幾多日？如果有醫療證明書應該點樣提交呢？
+[  7/46] ✗   0.9s  我請咗年假後發現公司之前冇補我上個月嘅事假，而家要追回有咩難度？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[  8/46] ✓   1.0s  點算先有資格領法定假日嘅薪酬？如果我去咗旅行未請假會點？
+[  9/46] ✓   0.9s  「即時解僱」同「無須通知期」有咩分別？
+[ 10/46] ✓   2.8s  佢哋話我因為「公司架構調整」所以要重簽個合約改動職位，但內容完全唔同，點算？
+[ 11/46] ✗   1.5s  公司突然通知我即刻走人，連預先話都要俾都得唔使給，咁算係咪合法解僱？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 12/46] ✗   1.2s  合約上寫住『無須通知』但雇主真係想即刻走人，有咩法例保護？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 13/46] ✓   1.7s  如果我只係請咗幾天假然後就被辭退，這合理嗎？
+[ 14/46] ✗   1.1s  老闆話我「無效」通知期就逐走我，我可以去勞工處投訴未？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 15/46] ✗   1.1s  雇主話我犯咗錯就要辭退，但我唔承認，點算？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 16/46] ✗   1.2s  點樣定義「嚴重失職」至可以即刻終止合約而無須通知期？   urgency: gold='low'->pred='medium'
+[ 17/46] ✓   2.2s  僱主以「罰款」名義從我薪金扣除一百塊，但我並無違反公司規章，這筆錢可以追回嗎？
+[ 18/46] ✗   1.1s  公司將我底薪由一萬減至八千，但話係加薪表現獎金，請問這種名義減薪是否被容許？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 19/46] ✓   1.1s  公司從我的薪金扣除「培訓費」和「工具押金」，但沒有發出書面通知，這樣做合法嗎？
+[ 20/46] ✓   2.4s  公司話將我嘅月薪拆成兩個部分出，咁樣做對唔對我？”
+[ 21/46] ✓   1.0s  公司話要預扣未來兩個月嘅加班費俾我，因為佢哋覺得我會遲交返嚟，呢個做法合法嗎？
+[ 22/46] ✓   1.0s  咩叫做「最低工資」？佢係點樣計算嘅？
+[ 23/46] ✗   1.0s  如果我係清潔工，點算先知道我每日應該收到幾多錢先符合最低工資標準？   urgency: gold='low'->pred='medium'
+[ 24/46] ✗   2.2s  老板同我说咗要扣除我两日工资俾我做工唔够钟，但我觉得我全程都有出席，点算先至可以   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 25/46] ✓   1.1s  如果我係兼職同全日工交替做，公司應該按照邊個身份去計算強積金供款比例？
+[ 26/46] ✗   1.0s  如果我辭職，前東家會喺幾耐內補交我所有未付嘅強制性公積金供款？   urgency: gold='high'->pred='medium'
+[ 27/46] ✓   1.1s  我係兼職，公司話唔使交強積金，但我覺得佢講錯咗，點先算有資格？
+[ 28/46] ✗   1.4s  我入職兩年半，而家想知邊樣嘅 MPF 產品適合年輕員工？有咩特別優惠或者低費率嘅   urgency: gold='low'->pred='medium'
+[ 29/46] ✓   1.0s  我想問下，強制性公積金（MPF）咩叫做『強制』呀？如果我冇參加，公司會幫我開戶嗎
+[ 30/46] ✗   1.1s  我想問緊 MPF 係咪只可以喺銀行戶口取返？點算先可以申請把錢轉去另一個基金？   urgency: gold='medium'->pred='low'
+[ 31/46] ✗   1.0s  點樣申請提前提取強積金？有邊啲情況係可以提早提走咗個數嘅？   urgency: gold='low'->pred='medium'
+[ 32/46] ✗   2.3s  做住家庭傭工（住家僱員）同一般辦公室員工，邊度受嘅保障唔一樣嗎？   urgency: gold='low'->pred='medium'
+[ 33/46] ✗   1.1s  如果我只係做過幾個鐘頭就得返屋企，就算唔係正式工，有無權利收薪金？   category: gold='適用範圍'->pred='工資與扣薪'
+[ 34/46] ✗   1.0s  我係兼職侍應生，而家被話係「自由身」所以唔使補假，但其實我要簽紙頭先可以上樓落班   category: gold='適用範圍'->pred='假期與休假' | escalate: gold=True->pred=False
+[ 35/46] ✗   2.3s  我個老闆話我係合約制，所以無假，但其實我做住同佢一樣長年累月，我有無權受保護？   category: gold='適用範圍'->pred='假期與休假' | urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 36/46] ✗   1.1s  邊位朋友受僱傭條例保障呢？係咪做满七天才算正式員工呀？   urgency: gold='low'->pred='medium'
+[ 37/46] ✗   0.8s  邊啲人士係完全唔受《僱傭條例》保障嘅？例如學生實習生同埋家庭幫手分別點處理？   urgency: gold='low'->pred='medium'
+[ 38/46] ✓   1.1s  邊啲人定義為「自僱人士」會完全不受《僱傭條例》保障？
+[ 39/46] ✗   2.0s  邊度先算係僱員？自僜人士點算先有權享受假期同埋醫療保險呀？   urgency: gold='low'->pred='medium'
+[ 40/46] ✗   1.2s  做咗兩年整，係咪算唔到三年？   urgency: gold='low'->pred='medium'
+[ 41/46] ✓   1.1s  如果我係合約制員工，合約屆滿後唔續約，我有權拿乜嘢錢？
+[ 42/46] ✓   1.1s  我係臨時工，做咗一年就走，有無遣散費？
+[ 43/46] ✗   2.2s  辭退信入面寫咗「無賠償」，但其實應該有遣散費點算？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 44/46] ✗   1.1s  辭退通知信入面冇寫遣散費金額，我可以要求幾多？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 45/46] ✓   1.0s  遣散費同長期服務金可以一齊拿嗎？
+[ 46/46] ✓   1.1s  點算先知道自己係咪被「強迫辭退」，而唔係自願離職，因為遣散費數額會唔同？
+
+=== 結果 ===
+category_acc : 43/46 = 93.5%
+urgency_acc  : 23/46 = 50.0%
+escalate_acc : 34/46 = 73.9%
+exact_match  : 20/46 = 43.5%      <- 三欄全對（業務真正在意的）
+json_valid   : 46/46 = 100.0%
+latency      : p50=1133ms  p95=2784ms
+
+[i] 詳細結果 -> baseline_9b_full.json
+[next] 微調後跑同一腳本（--model 換成微調模型），兩份 report 相比
+
+=== exit code: 0 ===

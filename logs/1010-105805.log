@@ -1,0 +1,198 @@
+=== 2026-10-10 10:58:05 ===
+$ python check_dataset.py &&  python evaluate.py --data data/test.jsonl --out v2_9b.json &&  python train.py --eval-only --no-adapter --no-quant --base Qwen/Qwen3-1.7B --out v2_base.json &&  python train.py --eval-only --no-quant --base Qwen/Qwen3-1.7B --out v2_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] rows: 717
+    categories covered: 6/6
+    urgency:  {'high': 230, 'low': 185, 'medium': 302}
+    escalate: {True: 305, False: 412}
+    text length: min=10 median=32 max=63
+    duplicate texts: 13   conflicting labels: 0
+
+[i] split: train=501 val=108 test=108
+[i] wrote data/train.jsonl, val.jsonl, test.jsonl
+[i] spot-check 32 rows -> data/review_sample.jsonl
+
+[!] BEFORE TRAINING: read review_sample.jsonl and fix wrong labels.
+    Synthetic data always contains some — SPEC.md requires >=10% review.
+[i] model=qwen3.5:9b  data=data/test.jsonl  n=108  system=short (379 chars)
+
+[  1/108] ✓   1.1s  侍產假係咪只限於母親請？父親可以請唔？如果有薪嘅話點算先有資格？
+[  2/108] ✗   0.7s  公司安排我在休息日出差並支付加班費，但唔俾我放事假，咁算係補假定義清楚吗？   urgency: gold='low'->pred='medium'
+[  3/108] ✗   0.8s  如果我放年假嗰陣係休息日，有無規定要補返咩日？   urgency: gold='low'->pred='medium'
+[  4/108] ✗   0.5s  如果我放年假嗰陣係休息日，有無規定要補返咩日？   urgency: gold='low'->pred='medium'
+[  5/108] ✗   0.5s  如果我放年假嗰陣係休息日，有無規定要補返咩日？   urgency: gold='low'->pred='medium'
+[  6/108] ✗   0.6s  如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？   urgency: gold='high'->pred='medium'
+[  7/108] ✗   1.2s  如果我請病假超過七日，公司要通知我返覆醫生報告嘅期限係幾時？   urgency: gold='low'->pred='medium'
+[  8/108] ✗   1.2s  年假到期未請完，公司會唔會強行扣除我嘅工資？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[  9/108] ✗   1.0s  我係兼職，每星期工作三日，請問我有無年假呀？一年幾多日？   urgency: gold='low'->pred='medium'
+[ 10/108] ✗   1.3s  我個仔出世，我想知侍產假可以請多耐，而家有無薪假嗎？   urgency: gold='low'->pred='medium'
+[ 11/108] ✗   1.2s  我入職三年半，今年係咪有權請年假？點算先至係足日數？   escalate: gold=True->pred=False
+[ 12/108] ✗   1.2s  我入職時合約寫住年假一年一日，但實際操作好似好少，呢個係咪違規？   escalate: gold=True->pred=False
+[ 13/108] ✗   1.3s  我已經做咗一年，公司今日突然通知唔再讓我請年假，呢個對唔對？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 14/108] ✗   1.2s  我已經請咗足 7 日事假啦，而家公司話要扣我半個月糧，係咪做錯嘢？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 15/108] ✓   1.5s  我請假返醫院陪老公做手術，邊類假期可以請？算係病假定係年假？
+[ 16/108] ✗   1.1s  我請咗年假去旅行，但公司突然取消放假安排，可以申請補假嗎？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 17/108] ✗   1.3s  法定假日我如果已經請咗年假放假，公司點算先至可以補我？   urgency: gold='low'->pred='medium'
+[ 18/108] ✓   1.1s  請問休息日放假係咪一定要補假先可以唔用錢？
+[ 19/108] ✗   1.2s  「自動離職」同「被解僱」有什麼分別？如果我誤會咗情況會有什麼後果？   urgency: gold='low'->pred='medium'
+[ 20/108] ✓   1.6s  公司提出用「和解協議」取代正式解僱信，如果我唔簽佢會唔會強行算我離職？
+[ 21/108] ✓   1.5s  公司突然話要停我職，但我仲未寫入職時協議上說嘅通知期，係咪合法？
+[ 22/108] ✓   1.5s  公司話係因為公司重組要先走人，但無跟我商量就發解僱信，咁樣做有違法嗎？
+[ 23/108] ✗   1.8s  公司話個月尾先出糧，但今日已經遲咗兩個禮拜未付，點算先得？   category: gold='合約與解僱'->pred='工資與扣薪'
+[ 24/108] ✗   1.5s  咩叫做「不合理解僱」？邊啲情況先算係合理？   urgency: gold='low'->pred='medium'
+[ 25/108] ✓   1.5s  如果公司想以互議終止合約（mutual termination）代替正式解僱，需
+[ 26/108] ✓   1.6s  如果我同公司簽訂了無限期合約，而佢哋想終止合約，最需要幾多日通知期？
+[ 27/108] ✗   1.5s  如果我被調職減薪，需要雇主同意先至合法嗎？   category: gold='合約與解僱'->pred='工資與扣薪'
+[ 28/108] ✗   1.3s  我個月前被辭退，公司只畀緊一個月通知期，但我入職三年，點算先有資格拿三個半月？   category: gold='合約與解僱'->pred='離職補償'
+[ 29/108] ✗   1.2s  老闆無解釋就逐走我，我可以要求補通知期嗎？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 30/108] ✗   0.9s  老闆話因為疫情關係要縮減人手，但我無犯過任何錯誤，公司可以随意炒人嗎？   escalate: gold=True->pred=False
+[ 31/108] ✓   0.9s  老闆話我犯了咗唔犯嘅錯誤要炒我，但無任何書面警告或會議記錄，點樣證明佢講錯？
+[ 32/108] ✗   1.0s  老闆話要俾我寫檢討書先至留番，否則即被炒，呢個過程算合法嗎？   urgency: gold='medium'->pred='high'
+[ 33/108] ✓   0.9s  雇主無聲無息鎖門逐走我，但我仲喺度工作，點算？
+[ 34/108] ✗   1.0s  點樣先可以收集證據證明老闆解僱我係出於報復或者歧視，而非真正嘅表現問題？   escalate: gold=True->pred=False
+[ 35/108] ✗   1.2s  點樣才算係「合理」嘅解僱程序？需要幾多個證明人證詞先算數？   urgency: gold='low'->pred='medium'
+[ 36/108] ✓   1.0s  點算先可以證明老闆係無理地解僱我，而唔係因為表現欠佳？
+[ 37/108] ✗   1.0s  「津貼」係咪一定都要俾，定係可以隨時取消？   category: gold='工資與扣薪'->pred='適用範圍'
+[ 38/108] ✗   1.1s  公司將我調職減薪，但我唔接受，點樣處理先至確保我個月薪金唔會被強行扣除？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 39/108] ✓   1.0s  公司從我的薪金扣除「培訓費」和「工具押金」，但沒有發出書面通知，這樣做合法嗎？
+[ 40/108] ✗   1.1s  公司说因为我迟到十分钟所以要扣我全日工资的一半，请问呢个做法系咪对？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 41/108] ✓   0.9s  公司遲遲未付我上一個多月糧，而家已經好幾日無動靜，點樣可以追討？
+[ 42/108] ✓   1.0s  如果公司用「培训费」或者「服装费」名目扣减我嘅薪金，而我又唔记得有签署过相关协议
+[ 43/108] ✓   1.0s  如果合約入面寫住可以隨時修改薪金條款，咁公司話改減薪有無法律效力？
+[ 44/108] ✓   1.0s  如果合約寫住每月固定收入$10,000，咁係咪表示任何額外獎賞都唔係工資？
+[ 45/108] ✓   0.9s  我入職三年，老闆今日突然話要減我嘅時薪由$45 改為$30，可以同意嗎？
+[ 46/108] ✓   0.9s  我喺同一間公司做咗好多年，但最近老闆話無錢出糧，我想問有無辦法保障自己嘅權益？
+[ 47/108] ✗   1.0s  我生病請咗假後返工，公司卻話要扣少啲錢做作「病假扣除」，咁係咪對？   category: gold='工資與扣薪'->pred='假期與休假' | urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 48/108] ✓   0.9s  我請咗病假後出糧，公司少算咗我一晚嘅薪金，而家距返到 5000 元有差額，我點去
+[ 49/108] ✗   1.0s  老闆話我上個月請咗假，所以那個星期嘅底薪全數扣除，但嗰日係正常工作日，對唔對？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 50/108] ✓   1.1s  老闆話我唔夠表現所以要扣減我的提成，點樣先算合理？
+[ 51/108] ✓   0.9s  老闆話我工傷後返工要減薪，咁點算係唔係違法扣薪？
+[ 52/108] ✓   1.0s  老闆說因為我請咗事假，所以唔使畀我上個月嘅全薪，只畀做咗日數嘅錢，這是正確做法嗎
+[ 53/108] ✓   1.0s  計算最低工資時，係咪包括非現金福利例如免費膳食或者住宿？
+[ 54/108] ✗   0.9s  點樣計算最低工資的每日或每週工時數額？如果我請咗病假，未做嘅工時會否扣除薪金？   urgency: gold='low'->pred='medium'
+[ 55/108] ✓   1.2s  公司話等我俾多啲錢入 MPF，但話個數額係「可選」嘅，唔係強制，咁點算先清楚？
+[ 56/108] ✓   0.9s  咩叫做「最低供款比率」? 雇主最少要供幾多?
+[ 57/108] ✓   0.9s  咩叫做「自動提款權」？邊啪人擁有呢個權利可以隨便取數出嚟呀？
+[ 58/108] ✓   0.9s  咩叫做強制性公積金 (MPF)?
+[ 59/108] ✓   0.9s  咩叫做強制性公積金（MPF），邊啲人需要買、邊啲人唔使買啊？
+[ 60/108] ✓   1.1s  如果我係受僱於外地公司但在香港工作，需要定不需要開 MPF?
+[ 61/108] ✗   1.0s  如果我已經全職工作咗二十年，而家想提早退休，有冇特別嘅補償？   category: gold='退休與福利'->pred='離職補償' | urgency: gold='medium'->pred='low'
+[ 62/108] ✗   0.9s  如果我離職咗，個前雇主仲未交完我 MPF, 我應點索返?   urgency: gold='high'->pred='medium'
+[ 63/108] ✗   0.9s  我個戶口係由前間公司管理緊，而家新公司想接管，需要點做先可以順利轉名咁？   escalate: gold=True->pred=False
+[ 64/108] ✓   0.9s  我個戶口有幾多錢先可以申請無息貸款或者轉作個人投資計劃呀？
+[ 65/108] ✗   1.0s  我個月只做得五日工，算唔算全職？邊度可以查詢我嘅 MPF 供款紀錄？   category: gold='退休與福利'->pred='適用範圍'
+[ 66/108] ✗   0.9s  我已經退休了，但公司仲幫我轉 MPF 咗兩個月，呢筆錢點算先可以領落嚟？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 67/108] ✓   0.9s  我想知道如果我在公司任職期間被裁員，我原本已經供咗好多錢嘅 MPF，而家要點樣處
+[ 68/108] ✗   0.9s  我最近發現公司冇幫我買強積金，但我又未退休，應該點去投訴佢哋違反規則？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 69/108] ✓   0.9s  我發現老板將個名寫錯咗，俾唔係本人嘅 MPF 帳戶供錢，而係自己搞一個假戶口收走
+[ 70/108] ✓   0.9s  我而家失業咗，但公司仲未通知我去申請轉戶口，我應該點樣跟進先至唔會影響到我嘅退休
+[ 71/108] ✗   0.9s  我而家正準備退休，邊啲文件需要預備先至可以申請領取養老金？   urgency: gold='medium'->pred='low'
+[ 72/108] ✗   1.0s  我而家正處於產假期，公司要扣減我個月供款俾 MPF, 係咪正確？   urgency: gold='high'->pred='medium'
+[ 73/108] ✗   1.0s  做住家庭教師同做住補習社嘅老師，邊度受《僱傭條例》保障比較多？   urgency: gold='medium'->pred='low'
+[ 74/108] ✗   1.0s  做住清潔工但只係偶爾被叫返，而家唔出糧，我係邊類僱員身份受保障？   urgency: gold='medium'->pred='high'
+[ 75/108] ✓   1.0s  做嘢唔使簽書面合約就算非法僱傭嗎？邊啲人必須要有書面合約？
+[ 76/108] ✗   1.2s  公司叫我做嘅係清潔工，但我之前已經喺邊度搵過類似工作，呢種算唔算重組員工？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 77/108] ✗   1.2s  兼職員工如果係每日固定時間返工，有無權享有法定假日？   urgency: gold='medium'->pred='low'
+[ 78/108] ✓   1.2s  咩叫做自僱人士？同受僱人嘅分別喺邊度？
+[ 79/108] ✗   1.2s  我係個兼職送貨員，但老闆話我做嘅系自僱，請問點樣分別？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 80/108] ✗   1.3s  我係間工場工人，最近被話係自僱，但其實只係接返工派活，請問點樣判斷我係受雇定自僱   escalate: gold=True->pred=False
+[ 81/108] ✗   1.1s  我入職唔知幾時，個老闆最近突然話我係自由身，要即刻走，我有無資格申請補償同埋受保   category: gold='適用範圍'->pred='合約與解僱'
+[ 82/108] ✗   1.2s  老闆用「顧問」名義聘請我，但我實際上要每日去公司打卡同跟班做嘢，點樣界定邊種情況   urgency: gold='high'->pred='medium'
+[ 83/108] ✗   1.0s  老闆用假自僱合約掩飾實際僱用關係，我想確認自己究竟有咩資格受保護，可以求助邊度？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 84/108] ✗   1.4s  老闆話我係「獨立合約商」但其實要我買公司嘅制服同設備，點算先知道真係受雇未？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 85/108] ✗   1.3s  老闆話我唔使簽書寫口頭就係受僱關係，但實際上我有固定薪水和假期安排，咁算邊一種？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[ 86/108] ✓   1.0s  請問短期工（Temporary Worker）同長期僱員嘅法律定義有咩分別？
+[ 87/108] ✓   1.2s  邊位朋友受僱傭條例保障呢？係咪做满七天才算正式員工呀？
+[ 88/108] ✓   1.0s  邊度定義「僱員」先算係勞工處管嘅對象？例如只係簽咗口頭協議有無保障？
+[ 89/108] ✗   1.6s  邊種情況算係僱員關係？如果只係俾我個地方用下，我帶工具去佢舖位做活，點算先係受保   urgency: gold='medium'->pred='low' | escalate: gold=True->pred=False
+[ 90/108] ✓   1.6s  點樣定義「僱員」？如果一個工人只係幫手搬運貨物，未簽合約，有權受法律保障嗎？
+[ 91/108] ✗   1.4s  公司話我唔夠通知期就要俾錢，但點算先知道遣散費應該係幾多？   escalate: gold=False->pred=True
+[ 92/108] ✗   1.8s  公司話我犯錯所以要即時解僱無通知期，但其實佢未畀我機會申辯，我要唔要錢？點算先有   category: gold='離職補償'->pred='合約與解僱'
+[ 93/108] ✓   1.5s  咁樣係咪表示公司必須付遣散費？
+[ 94/108] ✓   1.0s  如果我係請有薪病假後被解僱，遣散費會減少定唔會？
+[ 95/108] ✗   0.9s  我係兼職，做咗三年，辭退後有無權拿遣散費？   category: gold='離職補償'->pred='適用範圍'
+[ 96/108] ✗   2.0s  我個老闆話因為我唔肯加班所以要辭我，但其實我無被通知過要加班，我要唔要錢？點算先   category: gold='離職補償'->pred='合約與解僱'
+[ 97/108] ✓   1.1s  我個老闆話因為疫情要裁員，但其實佢冇畀通知期就走，我要唔要錢？點算先有資格拿遣散
+[ 98/108] ✓   1.2s  我做咗一年嘅工，而家公司話要縮減人手，我知唔知道點算先有資格拿遣散費？
+[ 99/108] ✗   1.9s  我做咗五年嘅工，現在公司要辭我，我點樣計遣散費同長期服務金？   escalate: gold=False->pred=True
+[100/108] ✗   1.3s  我已經喺同一家公司做咗十六年，如果今日被解僱，遣散費係幾多錢？   urgency: gold='high'->pred='medium' | escalate: gold=True->pred=False
+[101/108] ✗   1.0s  我想知如果公司倒閉清盤，我仲可以咩辦法追討遣散費同長期服務金？   urgency: gold='high'->pred='medium'
+[102/108] ✗   0.9s  我無簽書面合約，做咗三年半被辭退，點算先知道自己合不合資格領遣散費？   escalate: gold=True->pred=False
+[103/108] ✗   1.2s  我請咗好多年假，而家被辭退，假期日數點影響遣散費金額？   urgency: gold='high'->pred='medium'
+[104/108] ✗   0.8s  條文話住我咩叫做長期服務金？邊啲人係受保護嘅？   category: gold='離職補償'->pred='退休與福利'
+[105/108] ✓   0.9s  老闆話俾我知要即刻走，但唔肯簽解僱書，我點樣確認遣散費數額？
+[106/108] ✓   0.9s  老闆話我『辭職』咗其實係佢叫我走，點樣算遣散費？
+[107/108] ✓   0.8s  解僱通知書寫住『即日生效』，但我個月起薪日先至到，點算遣散費？
+[108/108] ✓   0.9s  長期服務金係點算出嚟嘅？有無上限？
+
+=== 結果 ===
+category_acc : 96/108 = 88.9%
+urgency_acc  : 66/108 = 61.1%
+escalate_acc : 81/108 = 75.0%
+exact_match  : 47/108 = 43.5%      <- 三欄全對（業務真正在意的）
+json_valid   : 108/108 = 100.0%
+latency      : p50=1031ms  p95=1629ms
+
+[i] 詳細結果 -> v2_9b.json
+[next] 微調後跑同一腳本（--model 換成微調模型），兩份 report 相比
+W1010 11:00:11.501000 1625 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1010 11:00:11.543000 1625 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+[i] train=501  val=108  test=108  base=Qwen/Qwen3-1.7B
+[i] train system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] test system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] train=501  val=108  test=108  base=Qwen/Qwen3-1.7B
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:03<16:41,  3.23s/it]Loading weights:   1%|          | 2/311 [00:03<08:47,  1.71s/it]Loading weights:   5%|▍         | 14/311 [00:03<00:48,  6.17it/s]Loading weights:   8%|▊         | 24/311 [00:04<00:23, 12.05it/s]Loading weights:  11%|█▏        | 35/311 [00:04<00:13, 19.88it/s]Loading weights:  15%|█▌        | 47/311 [00:04<00:08, 30.06it/s]Loading weights:  19%|█▉        | 60/311 [00:04<00:06, 41.79it/s]Loading weights:  23%|██▎       | 72/311 [00:04<00:04, 53.58it/s]Loading weights:  27%|██▋       | 83/311 [00:04<00:03, 61.56it/s]Loading weights:  31%|███       | 97/311 [00:04<00:02, 75.80it/s]Loading weights:  35%|███▍      | 108/311 [00:04<00:02, 83.22it/s]Loading weights:  38%|███▊      | 119/311 [00:05<00:02, 71.54it/s]Loading weights:  43%|████▎     | 133/311 [00:05<00:02, 85.88it/s]Loading weights:  47%|████▋     | 145/311 [00:05<00:01, 91.74it/s]Loading weights:  50%|█████     | 156/311 [00:05<00:01, 95.54it/s]Loading weights:  54%|█████▍    | 168/311 [00:05<00:01, 101.83it/s]Loading weights:  58%|█████▊    | 180/311 [00:05<00:01, 105.94it/s]Loading weights:  62%|██████▏   | 192/311 [00:05<00:01, 101.44it/s]Loading weights:  66%|██████▌   | 204/311 [00:05<00:01, 101.55it/s]Loading weights:  70%|███████   | 219/311 [00:05<00:00, 113.79it/s]Loading weights:  74%|███████▍  | 231/311 [00:06<00:00, 105.02it/s]Loading weights:  78%|███████▊  | 243/311 [00:06<00:00, 102.67it/s]Loading weights:  82%|████████▏ | 254/311 [00:06<00:00, 79.92it/s] Loading weights:  85%|████████▍ | 263/311 [00:06<00:00, 69.37it/s]Loading weights:  87%|████████▋ | 271/311 [00:06<00:00, 52.54it/s]Loading weights:  89%|████████▉ | 278/311 [00:07<00:00, 50.88it/s]Loading weights:  91%|█████████▏| 284/311 [00:07<00:00, 50.63it/s]Loading weights:  93%|█████████▎| 290/311 [00:07<00:00, 49.84it/s]Loading weights:  95%|█████████▌| 296/311 [00:07<00:00, 45.38it/s]Loading weights:  97%|█████████▋| 302/311 [00:07<00:00, 45.03it/s]Loading weights: 100%|█████████▉| 310/311 [00:07<00:00, 50.53it/s]Loading weights: 100%|██████████| 311/311 [00:07<00:00, 40.52it/s]
+[i] gradient checkpointing enabled: True
+[i] BASE model only (no adapter) — the control run
+    [dist] category: acc=55.6% majority=16.7% pred={'假期與休假': 17, '合約與解僱': 57, '工資與扣薪': 19, '退休與福利': 10, '離職補償': 4, '適用範圍': 1}
+    [dist] urgency: acc=44.4% majority=39.8% pred={'medium': 36, 'high': 72}
+    [dist] escalate: acc=63.9% majority=52.8% pred={False: 36, True: 72}
+    [gen] tokens: min=22 median=25 max=25 (cap 64); 0/108 hit the cap
+    [recall] urgency=high    38/43 = 88.4%
+    [recall] urgency=medium  10/36 = 27.8%
+    [recall] urgency=low     0/29 = 0.0%
+    [cm] urgency gold->pred: {'high->high': 38, 'high->medium': 5, 'low->high': 8, 'low->medium': 21, 'medium->high': 26, 'medium->medium': 10}
+    [out] per-item gold/pred -> v2_base.json
+[i] test: {
+  "category_acc": 0.5555555555555556,
+  "urgency_acc": 0.4444444444444444,
+  "escalate_acc": 0.6388888888888888,
+  "exact_match": 0.2222222222222222,
+  "json_valid": 1.0,
+  "latency_ms_per_item": 939
+}
+W1010 11:02:09.204000 1670 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1010 11:02:09.230000 1670 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+[i] train=501  val=108  test=108  base=Qwen/Qwen3-1.7B
+[i] train system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] test system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] train=501  val=108  test=108  base=Qwen/Qwen3-1.7B
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<02:21,  2.19it/s]Loading weights:   1%|          | 2/311 [00:00<02:09,  2.39it/s]Loading weights:   5%|▌         | 17/311 [00:00<00:11, 26.61it/s]Loading weights:  12%|█▏        | 37/311 [00:01<00:04, 58.39it/s]Loading weights:  19%|█▉        | 59/311 [00:01<00:02, 90.23it/s]Loading weights:  24%|██▍       | 76/311 [00:01<00:02, 107.65it/s]Loading weights:  30%|██▉       | 93/311 [00:01<00:01, 117.55it/s]Loading weights:  37%|███▋      | 115/311 [00:01<00:01, 139.31it/s]Loading weights:  44%|████▎     | 136/311 [00:01<00:01, 147.34it/s]Loading weights:  51%|█████     | 158/311 [00:01<00:00, 161.29it/s]Loading weights:  57%|█████▋    | 176/311 [00:01<00:00, 162.23it/s]Loading weights:  62%|██████▏   | 194/311 [00:01<00:00, 160.82it/s]Loading weights:  69%|██████▉   | 214/311 [00:02<00:00, 166.79it/s]Loading weights:  76%|███████▌  | 235/311 [00:02<00:00, 173.41it/s]Loading weights:  81%|████████▏ | 253/311 [00:02<00:00, 170.26it/s]Loading weights:  87%|████████▋ | 271/311 [00:02<00:00, 164.48it/s]Loading weights:  93%|█████████▎| 290/311 [00:02<00:00, 170.68it/s]Loading weights:  99%|█████████▉| 308/311 [00:02<00:00, 169.93it/s]Loading weights: 100%|██████████| 311/311 [00:02<00:00, 117.73it/s]
+[i] gradient checkpointing enabled: True
+[i] adapter loaded from /home/hugoy/projects/hk-labour-triage/models/triage-lora
+    [dist] category: acc=93.5% majority=16.7% pred={'假期與休假': 20, '合約與解僱': 17, '工資與扣薪': 19, '退休與福利': 16, '離職補償': 18, '適用範圍': 18}
+    [dist] urgency: acc=69.4% majority=39.8% pred={'medium': 59, 'low': 12, 'high': 37}
+    [dist] escalate: acc=81.5% majority=52.8% pred={False: 71, True: 37}
+    [gen] tokens: min=22 median=23 max=25 (cap 64); 0/108 hit the cap
+    [recall] urgency=high    32/43 = 74.4%
+    [recall] urgency=medium  31/36 = 86.1%
+    [recall] urgency=low     12/29 = 41.4%
+    [cm] urgency gold->pred: {'high->high': 32, 'high->medium': 11, 'low->low': 12, 'low->medium': 17, 'medium->high': 5, 'medium->medium': 31}
+    [out] per-item gold/pred -> v2_ft.json
+[i] test: {
+  "category_acc": 0.9351851851851852,
+  "urgency_acc": 0.6944444444444444,
+  "escalate_acc": 0.8148148148148148,
+  "exact_match": 0.5648148148148148,
+  "json_valid": 1.0,
+  "latency_ms_per_item": 1688
+}
+
+=== exit code: 0 ===

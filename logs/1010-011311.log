@@ -1,0 +1,17 @@
+=== 2026-10-10 01:13:11 ===
+$ python -c "import json; rows=[json.loads(l) for l in open('data/test.jsonl') if l.strip()][:20]; [print('---', i, chr(10), rows[i-1]['messages'][1]['content'], chr(10), '  gold:', rows[i-1]['messages'][2]['content']) for i in (3,7,12)]"
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+--- 3 
+ 如果我因為個人原因唔想請年假，公司應該點樣處理？ 
+   gold: {"category": "假期與休假", "urgency": "low", "escalate": false}
+--- 7 
+ 我請咗年假後發現公司之前冇補我上個月嘅事假，而家要追回有咩難度？ 
+   gold: {"category": "假期與休假", "urgency": "high", "escalate": true}
+--- 12 
+ 合約上寫住『無須通知』但雇主真係想即刻走人，有咩法例保護？ 
+   gold: {"category": "合約與解僱", "urgency": "high", "escalate": true}
+
+=== exit code: 0 ===

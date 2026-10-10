@@ -1,0 +1,14 @@
+=== 2026-10-10 00:29:51 ===
+$ ollama ps; echo '=== models ==='; ollama list
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+NAME          ID              SIZE      PROCESSOR    CONTEXT    UNTIL              
+qwen3.5:9b    56671c2ab938    5.6 GB    100% GPU     4096       4 minutes from now    
+=== models ===
+NAME              ID              SIZE      MODIFIED   
+qwen3.5:latest    56671c2ab938    6.6 GB    3 days ago    
+qwen3.5:9b        56671c2ab938    6.6 GB    3 days ago    
+
+=== exit code: 0 ===

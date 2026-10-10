@@ -1,0 +1,59 @@
+=== 2026-10-09 23:59:22 ===
+$ cp data/test.jsonl data/test.frozen.jsonl; sha256sum data/test.frozen.jsonl; echo; echo '########## CONTROL: 1.7B base, no adapter ##########'; python train.py --eval-only --no-adapter --no-quant --base Qwen/Qwen3-1.7B; echo; echo '########## FINE-TUNED: 1.7B + LoRA ##########'; python train.py --eval-only --no-quant --base Qwen/Qwen3-1.7B
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+f078530b3493befe66b770f7117359ae65751822cbb8071f2395c117d6cd6821  data/test.frozen.jsonl
+
+########## CONTROL: 1.7B base, no adapter ##########
+W1009 23:59:29.802000 15085 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1009 23:59:29.850000 15085 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+[i] train system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] test system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:01<06:45,  1.31s/it]Loading weights:   5%|▍         | 14/311 [00:01<00:22, 13.22it/s]Loading weights:   9%|▊         | 27/311 [00:01<00:10, 26.89it/s]Loading weights:  12%|█▏        | 38/311 [00:01<00:07, 37.23it/s]Loading weights:  16%|█▌        | 49/311 [00:01<00:05, 48.09it/s]Loading weights:  20%|█▉        | 61/311 [00:01<00:04, 61.33it/s]Loading weights:  23%|██▎       | 72/311 [00:01<00:03, 71.45it/s]Loading weights:  27%|██▋       | 83/311 [00:02<00:03, 73.95it/s]Loading weights:  30%|██▉       | 93/311 [00:02<00:02, 76.55it/s]Loading weights:  34%|███▍      | 105/311 [00:02<00:02, 81.82it/s]Loading weights:  37%|███▋      | 116/311 [00:02<00:02, 83.74it/s]Loading weights:  41%|████      | 126/311 [00:02<00:02, 78.53it/s]Loading weights:  44%|████▍     | 138/311 [00:02<00:02, 86.16it/s]Loading weights:  48%|████▊     | 149/311 [00:02<00:01, 90.95it/s]Loading weights:  53%|█████▎    | 164/311 [00:02<00:01, 105.34it/s]Loading weights:  57%|█████▋    | 177/311 [00:03<00:01, 105.12it/s]Loading weights:  60%|██████    | 188/311 [00:03<00:01, 98.65it/s] Loading weights:  64%|██████▍   | 200/311 [00:03<00:01, 103.54it/s]Loading weights:  68%|██████▊   | 211/311 [00:03<00:00, 100.42it/s]Loading weights:  72%|███████▏  | 223/311 [00:03<00:00, 104.98it/s]Loading weights:  75%|███████▌  | 234/311 [00:03<00:00, 102.19it/s]Loading weights:  79%|███████▉  | 245/311 [00:03<00:00, 93.48it/s] Loading weights:  82%|████████▏ | 255/311 [00:03<00:00, 93.84it/s]Loading weights:  86%|████████▌ | 266/311 [00:04<00:00, 96.12it/s]Loading weights:  89%|████████▉ | 278/311 [00:04<00:00, 97.70it/s]Loading weights:  93%|█████████▎| 289/311 [00:04<00:00, 96.85it/s]Loading weights:  96%|█████████▌| 299/311 [00:04<00:00, 76.08it/s]Loading weights: 100%|██████████| 311/311 [00:04<00:00, 68.65it/s]
+[i] gradient checkpointing enabled: True
+[i] BASE model only (no adapter) — the control run
+    [dist] category: acc=69.6% majority=17.4% pred={'假期與休假': 9, '合約與解僱': 20, '工資與扣薪': 9, '退休與福利': 6, '適用範圍': 2}
+    [dist] urgency: acc=37.0% majority=39.1% pred={'high': 30, 'medium': 16}   [!] no better than majority (39.1%)
+    [dist] escalate: acc=54.3% majority=71.7% pred={True: 30, False: 16}   [!] no better than majority (71.7%)
+    [gen] tokens: min=22 median=24 max=25 (cap 64); 0/46 hit the cap
+[i] test: {
+  "category_acc": 0.6956521739130435,
+  "urgency_acc": 0.3695652173913043,
+  "escalate_acc": 0.5434782608695652,
+  "exact_match": 0.2391304347826087,
+  "json_valid": 1.0,
+  "latency_ms_per_item": 1126
+}
+
+########## FINE-TUNED: 1.7B + LoRA ##########
+W1010 00:00:36.948000 15209 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1010 00:00:36.989000 15209 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+[i] train system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] test system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<02:27,  2.11it/s]Loading weights:   1%|          | 2/311 [00:00<02:20,  2.20it/s]Loading weights:   5%|▌         | 17/311 [00:01<00:11, 25.05it/s]Loading weights:  12%|█▏        | 36/311 [00:01<00:05, 54.30it/s]Loading weights:  16%|█▌        | 50/311 [00:01<00:03, 70.97it/s]Loading weights:  23%|██▎       | 70/311 [00:01<00:02, 97.74it/s]Loading weights:  27%|██▋       | 85/311 [00:01<00:02, 107.10it/s]Loading weights:  33%|███▎      | 103/311 [00:01<00:01, 123.46it/s]Loading weights:  38%|███▊      | 118/311 [00:01<00:01, 125.73it/s]Loading weights:  43%|████▎     | 135/311 [00:01<00:01, 134.45it/s]Loading weights:  48%|████▊     | 150/311 [00:01<00:01, 134.82it/s]Loading weights:  54%|█████▍    | 169/311 [00:02<00:01, 139.39it/s]Loading weights:  60%|█████▉    | 186/311 [00:02<00:00, 145.78it/s]Loading weights:  65%|██████▍   | 202/311 [00:02<00:00, 149.43it/s]Loading weights:  70%|███████   | 218/311 [00:02<00:00, 148.04it/s]Loading weights:  76%|███████▌  | 235/311 [00:02<00:00, 151.74it/s]Loading weights:  81%|████████  | 251/311 [00:02<00:00, 143.77it/s]Loading weights:  86%|████████▌ | 268/311 [00:02<00:00, 147.50it/s]Loading weights:  91%|█████████ | 283/311 [00:02<00:00, 140.16it/s]Loading weights:  96%|█████████▌| 298/311 [00:02<00:00, 137.16it/s]Loading weights: 100%|██████████| 311/311 [00:02<00:00, 104.04it/s]
+[i] gradient checkpointing enabled: True
+[i] adapter loaded from /home/hugoy/projects/hk-labour-triage/models/triage-lora
+    [dist] category: acc=91.3% majority=17.4% pred={'假期與休假': 10, '合約與解僱': 8, '工資與扣薪': 9, '退休與福利': 7, '適用範圍': 6, '離職補償': 6}
+    [dist] urgency: acc=58.7% majority=39.1% pred={'medium': 23, 'low': 8, 'high': 15}
+    [dist] escalate: acc=78.3% majority=71.7% pred={False: 31, True: 15}
+    [gen] tokens: min=22 median=23 max=25 (cap 64); 0/46 hit the cap
+[i] test: {
+  "category_acc": 0.9130434782608695,
+  "urgency_acc": 0.5869565217391305,
+  "escalate_acc": 0.782608695652174,
+  "exact_match": 0.5,
+  "json_valid": 1.0,
+  "latency_ms_per_item": 2237
+}
+
+=== exit code: 0 ===

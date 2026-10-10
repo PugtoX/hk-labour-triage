@@ -1,0 +1,20 @@
+=== 2026-10-10 01:00:25 ===
+$ head -20 data/test.jsonl > /tmp/u20.jsonl; python review.py --file /tmp/u20.jsonl
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+審三輪，每輪只判一個欄位（混著判會把對的欄位也標成錯）：
+  第 1 輪 category：這條提問真的屬於它標的類別嗎？
+  第 2 輪 urgency：「我這個情況算不算／有無資格」= medium，不是 low
+  第 3 輪 escalate：涉及具體金額／日期／已收通知 = true
+
+Traceback (most recent call last):
+  File "/home/hugoy/projects/hk-labour-triage/review.py", line 109, in <module>
+    main()
+  File "/home/hugoy/projects/hk-labour-triage/review.py", line 72, in main
+    print(f"[{i:>2}] {r['text']}")
+                      ~^^^^^^^^
+KeyError: 'text'
+
+=== exit code: 1 ===

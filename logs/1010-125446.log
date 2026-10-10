@@ -1,0 +1,13 @@
+=== 2026-10-10 12:54:46 ===
+$ python check_facts.py; echo; python check_facts.py data/test.jsonl
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] synthetic.jsonl: 717 rows, 22 foreign-term patterns checked
+[OK] no foreign-jurisdiction or invented terms found
+
+[i] test.jsonl: 106 rows, 22 foreign-term patterns checked
+[OK] no foreign-jurisdiction or invented terms found
+
+=== exit code: 0 ===

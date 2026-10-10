@@ -1,0 +1,36 @@
+=== 2026-10-10 01:17:07 ===
+$ python train.py --eval-only --no-quant --base Qwen/Qwen3-1.7B --out ft_17b.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+W1010 01:17:14.665000 16175 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'KernelPreference'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+W1010 01:17:14.721000 16175 .venv/lib/python3.12/site-packages/torch/utils/_pytree.py:630] <enum 'ScaleCalculationMode'> is an Enum subclass and is now natively supported by torch.compile as an opaque value type. Calling register_constant() on Enum subclasses is deprecated and will be an error in a future release.
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+[i] train system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] test system prompt matches schema.SYSTEM (379 chars) — contract OK
+[i] train=205  val=46  test=46  base=Qwen/Qwen3-1.7B
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<03:38,  1.42it/s]Loading weights:   1%|          | 2/311 [00:01<03:34,  1.44it/s]Loading weights:   3%|▎         | 10/311 [00:01<00:30,  9.81it/s]Loading weights:   7%|▋         | 23/311 [00:01<00:11, 25.47it/s]Loading weights:  10%|█         | 32/311 [00:01<00:08, 34.87it/s]Loading weights:  14%|█▎        | 42/311 [00:01<00:05, 46.36it/s]Loading weights:  16%|█▋        | 51/311 [00:01<00:04, 54.37it/s]Loading weights:  20%|██        | 63/311 [00:02<00:03, 68.65it/s]Loading weights:  23%|██▎       | 73/311 [00:02<00:03, 74.26it/s]Loading weights:  27%|██▋       | 83/311 [00:02<00:02, 78.23it/s]Loading weights:  30%|███       | 94/311 [00:02<00:02, 84.03it/s]Loading weights:  34%|███▍      | 105/311 [00:02<00:02, 90.49it/s]Loading weights:  37%|███▋      | 116/311 [00:02<00:02, 95.03it/s]Loading weights:  41%|████      | 127/311 [00:02<00:01, 96.75it/s]Loading weights:  45%|████▌     | 141/311 [00:02<00:01, 106.72it/s]Loading weights:  49%|████▉     | 152/311 [00:02<00:01, 103.96it/s]Loading weights:  52%|█████▏    | 163/311 [00:03<00:01, 104.92it/s]Loading weights:  56%|█████▌    | 174/311 [00:03<00:01, 99.80it/s] Loading weights:  59%|█████▉    | 185/311 [00:03<00:01, 98.06it/s]Loading weights:  63%|██████▎   | 195/311 [00:03<00:01, 98.23it/s]Loading weights:  66%|██████▌   | 205/311 [00:03<00:01, 93.33it/s]Loading weights:  69%|██████▉   | 215/311 [00:03<00:01, 86.49it/s]Loading weights:  75%|███████▍  | 232/311 [00:03<00:00, 97.69it/s]Loading weights:  78%|███████▊  | 244/311 [00:03<00:00, 98.55it/s]Loading weights:  82%|████████▏ | 256/311 [00:03<00:00, 97.67it/s]Loading weights:  86%|████████▋ | 269/311 [00:04<00:00, 101.57it/s]Loading weights:  90%|█████████ | 280/311 [00:04<00:00, 103.27it/s]Loading weights:  94%|█████████▎| 291/311 [00:04<00:00, 97.11it/s] Loading weights:  97%|█████████▋| 302/311 [00:04<00:00, 98.91it/s]Loading weights: 100%|██████████| 311/311 [00:04<00:00, 69.16it/s]
+[i] gradient checkpointing enabled: True
+[i] adapter loaded from /home/hugoy/projects/hk-labour-triage/models/triage-lora
+    [dist] category: acc=91.3% majority=17.4% pred={'假期與休假': 10, '合約與解僱': 8, '工資與扣薪': 9, '退休與福利': 7, '適用範圍': 6, '離職補償': 6}
+    [dist] urgency: acc=58.7% majority=39.1% pred={'medium': 23, 'low': 8, 'high': 15}
+    [dist] escalate: acc=78.3% majority=71.7% pred={False: 31, True: 15}
+    [gen] tokens: min=22 median=23 max=25 (cap 64); 0/46 hit the cap
+    [recall] urgency=high    9/12 = 75.0%
+    [recall] urgency=medium  11/18 = 61.1%
+    [recall] urgency=low     7/16 = 43.8%
+    [cm] urgency gold->pred: {'high->high': 9, 'high->medium': 3, 'low->low': 7, 'low->medium': 9, 'medium->high': 6, 'medium->low': 1, 'medium->medium': 11}
+    [out] per-item gold/pred -> ft_17b.json
+[i] test: {
+  "category_acc": 0.9130434782608695,
+  "urgency_acc": 0.5869565217391305,
+  "escalate_acc": 0.782608695652174,
+  "exact_match": 0.5,
+  "json_valid": 1.0,
+  "latency_ms_per_item": 1937
+}
+
+=== exit code: 0 ===

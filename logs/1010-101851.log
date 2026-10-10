@@ -1,0 +1,47 @@
+=== 2026-10-10 10:18:51 ===
+$ python analyze.py base_17b.json ft_17b.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+=== base_17b.json  (n=46) ===
+  urgency high    recall= 11/12  =  91.7% [65%-99%]   precision=36.7% (11/30)   {'high': 11, 'medium': 1}
+  urgency medium  recall=  6/18  =  33.3% [16%-56%]   precision=37.5% (6/16)   {'high': 12, 'medium': 6}
+  urgency low     recall=  0/16  =   0.0% [0%-19%]   precision= 0.0% (0/0)   {'high': 7, 'medium': 9}
+
+=== ft_17b.json  (n=46) ===
+  urgency high    recall=  9/12  =  75.0% [47%-91%]   precision=60.0% (9/15)   {'high': 9, 'medium': 3}
+  urgency medium  recall= 11/18  =  61.1% [39%-80%]   precision=47.8% (11/23)   {'high': 6, 'low': 1, 'medium': 11}
+  urgency low     recall=  7/16  =  43.8% [23%-67%]   precision=87.5% (7/8)   {'low': 7, 'medium': 9}
+
+=== cost (gold=high missed costs 3x) ===
+  base_17b.json            cost= 31 over n=46  = 67 per 100
+  ft_17b.json              cost= 25 over n=46  = 54 per 100
+  -> lower cost is better: ['ft_17b.json', 'base_17b.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: base_17b.json=30  ft_17b.json=22   order=['ft_17b.json', 'base_17b.json']
+    x3: base_17b.json=31  ft_17b.json=25   order=['ft_17b.json', 'base_17b.json']
+    x5: base_17b.json=33  ft_17b.json=31   order=['ft_17b.json', 'base_17b.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 11, 'medium': 2}
+  escalate=False {'high': 1, 'medium': 16, 'low': 16}
+
+=== paired McNemar: base_17b.json vs ft_17b.json ===
+  urgency      base_17b.json only=4  ft_17b.json only=14  McNemar p=0.031  -> SIGNIFICANT
+  exact_match  base_17b.json only=1  ft_17b.json only=13  McNemar p=0.002  -> SIGNIFICANT
+  urgency agreement: 23/46 = 50.0%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 3] gold=low     both_models=medium  如果我因為個人原因唔想請年假，公司應該點樣處理？
+  [10] gold=medium  both_models=high    佢哋話我因為「公司架構調整」所以要重簽個合約改動職位，但內容完全唔同，點算？
+  [13] gold=medium  both_models=high    如果我只係請咗幾天假然後就被辭退，這合理嗎？
+  [19] gold=medium  both_models=high    公司從我的薪金扣除「培訓費」和「工具押金」，但沒有發出書面通知，這樣做合法嗎？
+  [20] gold=medium  both_models=high    公司話將我嘅月薪拆成兩個部分出，咁樣做對唔對我？”
+  [21] gold=medium  both_models=high    公司話要預扣未來兩個月嘅加班費俾我，因為佢哋覺得我會遲交返嚟，呢個做法合法嗎？
+  [27] gold=medium  both_models=high    我係兼職，公司話唔使交強積金，但我覺得佢講錯咗，點先算有資格？
+  [28] gold=low     both_models=medium  我入職兩年半，而家想知邊樣嘅 MPF 產品適合年輕員工？有咩特別優惠或者低費率嘅選擇呀？
+  [36] gold=low     both_models=medium  邊位朋友受僱傭條例保障呢？係咪做满七天才算正式員工呀？
+  [40] gold=low     both_models=medium  做咗兩年整，係咪算唔到三年？
+
+=== exit code: 0 ===

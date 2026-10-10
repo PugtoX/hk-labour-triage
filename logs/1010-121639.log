@@ -1,0 +1,17 @@
+=== 2026-10-10 12:16:39 ===
+$ nvidia-smi --query-gpu=utilization.gpu,memory.used,memory.total --format=csv; echo '--- ollama ps ---'; ollama ps; echo '--- mem ---'; free -h
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+utilization.gpu [%], memory.used [MiB], memory.total [MiB]
+100 %, 7863 MiB, 8192 MiB
+--- ollama ps ---
+NAME          ID              SIZE      PROCESSOR    CONTEXT    UNTIL              
+qwen3.5:9b    56671c2ab938    5.6 GB    100% GPU     4096       4 minutes from now    
+--- mem ---
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       1.1Gi       7.7Gi       120Mi       7.0Gi        14Gi
+Swap:          4.0Gi          0B       4.0Gi
+
+=== exit code: 0 ===

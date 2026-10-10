@@ -1,0 +1,109 @@
+=== 2026-10-10 11:25:43 ===
+$ python analyze.py v2_9b.json v2_ft.json; python analyze.py v2_base.json v2_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+=== v2_9b.json  (n=108) ===
+  urgency high    recall= 20/43  =  46.5% [33%-61%]   precision=90.9% (20/22)   {'high': 20, 'medium': 23}
+  urgency medium  recall= 29/36  =  80.6% [65%-90%]   precision=45.3% (29/64)   {'high': 2, 'low': 5, 'medium': 29}
+  urgency low     recall= 17/29  =  58.6% [41%-74%]   precision=77.3% (17/22)   {'low': 17, 'medium': 12}
+
+=== v2_ft.json  (n=108) ===
+  urgency high    recall= 32/43  =  74.4% [60%-85%]   precision=86.5% (32/37)   {'high': 32, 'medium': 11}
+  urgency medium  recall= 31/36  =  86.1% [71%-94%]   precision=52.5% (31/59)   {'high': 5, 'medium': 31}
+  urgency low     recall= 12/29  =  41.4% [26%-59%]   precision=100.0% (12/12)   {'low': 12, 'medium': 17}
+
+=== cost (gold=high missed costs 3x) ===
+  v2_9b.json               cost= 88 over n=108  = 81 per 100
+  v2_ft.json               cost= 55 over n=108  = 51 per 100
+  -> lower cost is better: ['v2_ft.json', 'v2_9b.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: v2_9b.json=65  v2_ft.json=44   order=['v2_ft.json', 'v2_9b.json']
+    x3: v2_9b.json=88  v2_ft.json=55   order=['v2_ft.json', 'v2_9b.json']
+    x5: v2_9b.json=134  v2_ft.json=77   order=['v2_ft.json', 'v2_9b.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 41, 'medium': 10}
+  escalate=False {'high': 2, 'medium': 26, 'low': 29}
+
+=== paired McNemar: v2_9b.json vs v2_ft.json ===
+  urgency      v2_9b.json only=11  v2_ft.json only=20  McNemar p=0.150  -> NOT significant
+  exact_match  v2_9b.json only=9  v2_ft.json only=23  McNemar p=0.020  -> SIGNIFICANT
+  urgency agreement: 77/108 = 71.3%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 2] gold=low     both_models=medium  公司安排我在休息日出差並支付加班費，但唔俾我放事假，咁算係補假定義清楚吗？
+  [ 3] gold=low     both_models=medium  如果我放年假嗰陣係休息日，有無規定要補返咩日？
+  [ 4] gold=low     both_models=medium  如果我放年假嗰陣係休息日，有無規定要補返咩日？
+  [ 5] gold=low     both_models=medium  如果我放年假嗰陣係休息日，有無規定要補返咩日？
+  [ 6] gold=high    both_models=medium  如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？
+  [ 7] gold=low     both_models=medium  如果我請病假超過七日，公司要通知我返覆醫生報告嘅期限係幾時？
+  [ 8] gold=high    both_models=medium  年假到期未請完，公司會唔會強行扣除我嘅工資？
+  [10] gold=low     both_models=medium  我個仔出世，我想知侍產假可以請多耐，而家有無薪假嗎？
+  [16] gold=high    both_models=medium  我請咗年假去旅行，但公司突然取消放假安排，可以申請補假嗎？
+  [17] gold=low     both_models=medium  法定假日我如果已經請咗年假放假，公司點算先至可以補我？
+  [19] gold=low     both_models=medium  「自動離職」同「被解僱」有什麼分別？如果我誤會咗情況會有什麼後果？
+  [32] gold=medium  both_models=high    老闆話要俾我寫檢討書先至留番，否則即被炒，呢個過程算合法嗎？
+  [35] gold=low     both_models=medium  點樣才算係「合理」嘅解僱程序？需要幾多個證明人證詞先算數？
+  [54] gold=low     both_models=medium  點樣計算最低工資的每日或每週工時數額？如果我請咗病假，未做嘅工時會否扣除薪金？
+  [66] gold=high    both_models=medium  我已經退休了，但公司仲幫我轉 MPF 咗兩個月，呢筆錢點算先可以領落嚟？
+  [68] gold=high    both_models=medium  我最近發現公司冇幫我買強積金，但我又未退休，應該點去投訴佢哋違反規則？
+  [76] gold=high    both_models=medium  公司叫我做嘅係清潔工，但我之前已經喺邊度搵過類似工作，呢種算唔算重組員工？
+  [79] gold=high    both_models=medium  我係個兼職送貨員，但老闆話我做嘅系自僱，請問點樣分別？
+  [82] gold=high    both_models=medium  老闆用「顧問」名義聘請我，但我實際上要每日去公司打卡同跟班做嘢，點樣界定邊種情況算受僱？
+  [85] gold=high    both_models=medium  老闆話我唔使簽書寫口頭就係受僱關係，但實際上我有固定薪水和假期安排，咁算邊一種？
+  [101] gold=high    both_models=medium  我想知如果公司倒閉清盤，我仲可以咩辦法追討遣散費同長期服務金？
+  [103] gold=high    both_models=medium  我請咗好多年假，而家被辭退，假期日數點影響遣散費金額？
+
+=== v2_base.json  (n=108) ===
+  urgency high    recall= 38/43  =  88.4% [76%-95%]   precision=52.8% (38/72)   {'high': 38, 'medium': 5}
+  urgency medium  recall= 10/36  =  27.8% [16%-44%]   precision=27.8% (10/36)   {'high': 26, 'medium': 10}
+  urgency low     recall=  0/29  =   0.0% [0%-12%]   precision= 0.0% (0/0)   {'high': 8, 'medium': 21}
+
+=== v2_ft.json  (n=108) ===
+  urgency high    recall= 32/43  =  74.4% [60%-85%]   precision=86.5% (32/37)   {'high': 32, 'medium': 11}
+  urgency medium  recall= 31/36  =  86.1% [71%-94%]   precision=52.5% (31/59)   {'high': 5, 'medium': 31}
+  urgency low     recall= 12/29  =  41.4% [26%-59%]   precision=100.0% (12/12)   {'low': 12, 'medium': 17}
+
+=== cost (gold=high missed costs 3x) ===
+  v2_base.json             cost= 70 over n=108  = 65 per 100
+  v2_ft.json               cost= 55 over n=108  = 51 per 100
+  -> lower cost is better: ['v2_ft.json', 'v2_base.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: v2_base.json=65  v2_ft.json=44   order=['v2_ft.json', 'v2_base.json']
+    x3: v2_base.json=70  v2_ft.json=55   order=['v2_ft.json', 'v2_base.json']
+    x5: v2_base.json=80  v2_ft.json=77   order=['v2_ft.json', 'v2_base.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 41, 'medium': 10}
+  escalate=False {'high': 2, 'medium': 26, 'low': 29}
+
+=== paired McNemar: v2_base.json vs v2_ft.json ===
+  urgency      v2_base.json only=6  v2_ft.json only=33  McNemar p=0.000  -> SIGNIFICANT
+  exact_match  v2_base.json only=2  v2_ft.json only=39  McNemar p=0.000  -> SIGNIFICANT
+  urgency agreement: 63/108 = 58.3%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 2] gold=low     both_models=medium  公司安排我在休息日出差並支付加班費，但唔俾我放事假，咁算係補假定義清楚吗？
+  [ 3] gold=low     both_models=medium  如果我放年假嗰陣係休息日，有無規定要補返咩日？
+  [ 4] gold=low     both_models=medium  如果我放年假嗰陣係休息日，有無規定要補返咩日？
+  [ 5] gold=low     both_models=medium  如果我放年假嗰陣係休息日，有無規定要補返咩日？
+  [10] gold=low     both_models=medium  我個仔出世，我想知侍產假可以請多耐，而家有無薪假嗎？
+  [16] gold=high    both_models=medium  我請咗年假去旅行，但公司突然取消放假安排，可以申請補假嗎？
+  [18] gold=low     both_models=medium  請問休息日放假係咪一定要補假先可以唔用錢？
+  [30] gold=medium  both_models=high    老闆話因為疫情關係要縮減人手，但我無犯過任何錯誤，公司可以随意炒人嗎？
+  [32] gold=medium  both_models=high    老闆話要俾我寫檢討書先至留番，否則即被炒，呢個過程算合法嗎？
+  [39] gold=medium  both_models=high    公司從我的薪金扣除「培訓費」和「工具押金」，但沒有發出書面通知，這樣做合法嗎？
+  [44] gold=low     both_models=medium  如果合約寫住每月固定收入$10,000，咁係咪表示任何額外獎賞都唔係工資？
+  [50] gold=medium  both_models=high    老闆話我唔夠表現所以要扣減我的提成，點樣先算合理？
+  [64] gold=low     both_models=medium  我個戶口有幾多錢先可以申請無息貸款或者轉作個人投資計劃呀？
+  [65] gold=low     both_models=medium  我個月只做得五日工，算唔算全職？邊度可以查詢我嘅 MPF 供款紀錄？
+  [66] gold=high    both_models=medium  我已經退休了，但公司仲幫我轉 MPF 咗兩個月，呢筆錢點算先可以領落嚟？
+  [68] gold=high    both_models=medium  我最近發現公司冇幫我買強積金，但我又未退休，應該點去投訴佢哋違反規則？
+  [70] gold=medium  both_models=high    我而家失業咗，但公司仲未通知我去申請轉戶口，我應該點樣跟進先至唔會影響到我嘅退休金積蓄？
+  [76] gold=high    both_models=medium  公司叫我做嘅係清潔工，但我之前已經喺邊度搵過類似工作，呢種算唔算重組員工？
+  [79] gold=high    both_models=medium  我係個兼職送貨員，但老闆話我做嘅系自僱，請問點樣分別？
+  [87] gold=low     both_models=medium  邊位朋友受僱傭條例保障呢？係咪做满七天才算正式員工呀？
+  [108] gold=low     both_models=medium  長期服務金係點算出嚟嘅？有無上限？
+
+=== exit code: 0 ===

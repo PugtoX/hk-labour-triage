@@ -1,0 +1,99 @@
+=== 2026-10-10 12:39:47 ===
+$ python analyze.py v3_9b.json v3_ft.json; python analyze.py v3_base.json v3_ft.json
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+
+=== v3_9b.json  (n=106) ===
+  urgency high    recall= 14/37  =  37.8% [24%-54%]   precision=93.3% (14/15)   {'high': 14, 'medium': 23}
+  urgency medium  recall= 32/39  =  82.1% [67%-91%]   precision=49.2% (32/65)   {'high': 1, 'low': 6, 'medium': 32}
+  urgency low     recall= 20/30  =  66.7% [49%-81%]   precision=76.9% (20/26)   {'low': 20, 'medium': 10}
+
+=== v3_ft.json  (n=106) ===
+  urgency high    recall= 28/37  =  75.7% [60%-87%]   precision=80.0% (28/35)   {'high': 28, 'medium': 9}
+  urgency medium  recall= 31/39  =  79.5% [64%-89%]   precision=55.4% (31/56)   {'high': 7, 'low': 1, 'medium': 31}
+  urgency low     recall= 14/30  =  46.7% [30%-64%]   precision=93.3% (14/15)   {'low': 14, 'medium': 16}
+
+=== cost (gold=high missed costs 3x) ===
+  v3_9b.json               cost= 86 over n=106  = 81 per 100
+  v3_ft.json               cost= 51 over n=106  = 48 per 100
+  -> lower cost is better: ['v3_ft.json', 'v3_9b.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: v3_9b.json=63  v3_ft.json=42   order=['v3_ft.json', 'v3_9b.json']
+    x3: v3_9b.json=86  v3_ft.json=51   order=['v3_ft.json', 'v3_9b.json']
+    x5: v3_9b.json=132  v3_ft.json=69   order=['v3_ft.json', 'v3_9b.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 36, 'medium': 11}
+  escalate=False {'high': 1, 'medium': 28, 'low': 30}
+
+=== paired McNemar: v3_9b.json vs v3_ft.json ===
+  urgency      v3_9b.json only=15  v3_ft.json only=22  McNemar p=0.324  -> NOT significant
+  exact_match  v3_9b.json only=11  v3_ft.json only=24  McNemar p=0.041  -> SIGNIFICANT
+  urgency agreement: 69/106 = 65.1%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 4] gold=high    both_models=medium  如果我請病假後覺得好過返工，但公司唔收我返，會唔會被視為辭職？
+  [ 5] gold=low     both_models=medium  如果我請病假超過七日，公司要通知我返覆醫生報告嘅期限係幾時？
+  [ 7] gold=high    both_models=medium  年假到期未請完，公司會唔會強行扣除我嘅工資？
+  [ 8] gold=low     both_models=medium  我係兼職員工，邊度查下我應該有幾多日公假同埋年假？
+  [18] gold=low     both_models=medium  「自動離職」同「被解僱」有什麼分別？如果我誤會咗情況會有什麼後果？
+  [22] gold=low     both_models=medium  公司因為經濟欠佳要裁員，咁樣做到算係合理解僱嗎？需要符合什麼程序？
+  [27] gold=medium  both_models=high    我個合約寫住要俾 30 日通知期，但公司只派咗我一封信就要我即刻走，點算先至係合法？
+  [33] gold=low     both_models=medium  點樣定義「嚴重失職」至可以即刻終止合約而無須通知期？
+  [34] gold=low     both_models=medium  點樣才算係「合理」嘅解僱程序？需要幾多個證明人證詞先算數？
+  [36] gold=low     both_models=medium  什麼是「實報實銷」的津貼？如果僱主規定所有開支必須由員工自付才獲發津貼，這是否違規？
+  [43] gold=high    both_models=medium  我個月做完咗超過 48 小時工時，但下個月出糧只係按正常時薪畀，差嘅部分點申請？
+  [67] gold=high    both_models=medium  我已經退休了，但公司仲幫我轉 MPF 咗兩個月，呢筆錢點算先可以領落嚟？
+  [72] gold=high    both_models=medium  公司叫我做嘅係清潔工，但我之前已經喺邊度搵過類似工作，呢種算唔算重組員工？
+  [77] gold=high    both_models=medium  我已經跟同一間公司工作五年，但最近幾個月主要係做自由職業，請問我現時嘅身份點算受保障？
+  [83] gold=high    both_models=medium  老闆話我係自由職業者（自僱），唔洗簽僱傭合約，我點樣證明其實我受雇主管理？
+  [92] gold=low     both_models=medium  做咗一個月就走，算唔算入遣散費計算期數裡面？
+  [103] gold=high    both_models=medium  我想知如果公司倒閉清盤，我仲可以咩辦法追討遣散費同長期服務金？
+  [104] gold=high    both_models=medium  我請咗好多年假，而家被辭退，假期日數點影響遣散費金額？
+
+=== v3_base.json  (n=106) ===
+  urgency high    recall= 34/37  =  91.9% [79%-97%]   precision=45.3% (34/75)   {'high': 34, 'medium': 3}
+  urgency medium  recall= 11/39  =  28.2% [17%-44%]   precision=35.5% (11/31)   {'high': 28, 'medium': 11}
+  urgency low     recall=  0/30  =   0.0% [-0%-11%]   precision= 0.0% (0/0)   {'high': 13, 'medium': 17}
+
+=== v3_ft.json  (n=106) ===
+  urgency high    recall= 28/37  =  75.7% [60%-87%]   precision=80.0% (28/35)   {'high': 28, 'medium': 9}
+  urgency medium  recall= 31/39  =  79.5% [64%-89%]   precision=55.4% (31/56)   {'high': 7, 'low': 1, 'medium': 31}
+  urgency low     recall= 14/30  =  46.7% [30%-64%]   precision=93.3% (14/15)   {'low': 14, 'medium': 16}
+
+=== cost (gold=high missed costs 3x) ===
+  v3_base.json             cost= 67 over n=106  = 63 per 100
+  v3_ft.json               cost= 51 over n=106  = 48 per 100
+  -> lower cost is better: ['v3_ft.json', 'v3_base.json']
+  sensitivity (does the ranking survive other weights?):
+    x2: v3_base.json=64  v3_ft.json=42   order=['v3_ft.json', 'v3_base.json']
+    x3: v3_base.json=67  v3_ft.json=51   order=['v3_ft.json', 'v3_base.json']
+    x5: v3_base.json=73  v3_ft.json=69   order=['v3_ft.json', 'v3_base.json']
+
+=== gold: escalate x urgency (six populated cells => the fields are independent) ===
+  escalate=True  {'high': 36, 'medium': 11}
+  escalate=False {'high': 1, 'medium': 28, 'low': 30}
+
+=== paired McNemar: v3_base.json vs v3_ft.json ===
+  urgency      v3_base.json only=6  v3_ft.json only=34  McNemar p=0.000  -> SIGNIFICANT
+  exact_match  v3_base.json only=3  v3_ft.json only=40  McNemar p=0.000  -> SIGNIFICANT
+  urgency agreement: 54/106 = 50.9%
+=== both models agree, gold differs (candidate label errors) ===
+  [ 8] gold=low     both_models=medium  我係兼職員工，邊度查下我應該有幾多日公假同埋年假？
+  [17] gold=low     both_models=medium  請問休息日放假係咪一定要補假先可以唔用錢？
+  [23] gold=medium  both_models=high    公司突然將我調去一個遙遠嘅地方工作，而我拒絕咗，佢哋話係擅自改約，我可以點做？
+  [25] gold=medium  both_models=high    如果我係兼職員工但公司想逐走我，有咩法例保障？
+  [27] gold=medium  both_models=high    我個合約寫住要俾 30 日通知期，但公司只派咗我一封信就要我即刻走，點算先至係合法？
+  [28] gold=medium  both_models=high    我喺公司唔停數月，但老闆一直無同我一齊簽書面合約，如果今日被炒，點算先至有保障？
+  [37] gold=medium  both_models=high    公司從我的薪金扣除「培訓費」和「工具押金」，但沒有發出書面通知，這樣做合法嗎？
+  [49] gold=medium  both_models=high    老闆以「表現唔好」為理由扣減我個月薪金，咁做合法嗎？
+  [58] gold=low     both_models=medium  咩叫做強制性公積金（MPF）回扣？雇主仲可以收取額外費用咩？
+  [62] gold=low     both_models=medium  我個月只做得五日工，算唔算全職？邊度可以查詢我嘅 MPF 供款紀錄？
+  [65] gold=low     both_models=medium  我入職兩年半，而家想知邊樣嘅 MPF 產品適合年輕員工？有咩特別優惠或者低費率嘅選擇呀？
+  [67] gold=high    both_models=medium  我已經退休了，但公司仲幫我轉 MPF 咗兩個月，呢筆錢點算先可以領落嚟？
+  [72] gold=high    both_models=medium  公司叫我做嘅係清潔工，但我之前已經喺邊度搵過類似工作，呢種算唔算重組員工？
+  [77] gold=high    both_models=medium  我已經跟同一間公司工作五年，但最近幾個月主要係做自由職業，請問我現時嘅身份點算受保障？
+  [81] gold=medium  both_models=high    老闆話我係「自僱人士」所以唔使交強積金同埋要守合約，但其實我每日都係佢開支令上班，算邊類人？
+
+=== exit code: 0 ===

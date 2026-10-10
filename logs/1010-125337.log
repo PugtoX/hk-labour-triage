@@ -1,0 +1,18 @@
+=== 2026-10-10 12:53:37 ===
+$ python check_facts.py; echo; python check_facts.py data/test.jsonl
+
+[run.sh] python: /home/hugoy/projects/hk-labour-triage/.venv/bin/python  (Python 3.12.15)
+[run.sh] cwd: /home/hugoy/projects/hk-labour-triage
+
+[i] synthetic.jsonl: 717 rows, 21 foreign-term patterns checked
+[!] 1 hit(s):
+
+  [ 14] 「最低工資法」— 香港是《最低工資條例》
+        公司將我嘅加班費以「餐費津貼」名義扣除，這樣做是否符合最低工資法例的規定？
+
+[!] SPEC §4.1 requires 0. These are generator artefacts — the fix is to regenerate those rows (or delete them), not to relabel them.
+
+[i] test.jsonl: 106 rows, 21 foreign-term patterns checked
+[OK] no foreign-jurisdiction or invented terms found
+
+=== exit code: 0 ===
